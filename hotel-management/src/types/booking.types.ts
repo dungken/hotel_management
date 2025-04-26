@@ -1,34 +1,54 @@
-import { Customer } from './customer.types';
-import { Room } from './room.types';
+import { Customer, Room } from './index';
 
 export interface BookingChannel {
-  id: number;
-  name: string;
-  description?: string;
+  maKenh: number;
+  tenKenh: string;
+  moTa: string;
+  trangThai: boolean;
+}
+
+export interface BookingStatus {
+  value: string;
+  label: string;
+  color: string;
 }
 
 export interface Booking {
-  id: number;
-  displayId?: string;
-  customer: Customer;
-  room: Room;
-  checkInDate: string;
-  checkOutDate: string;
-  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
-  channel: BookingChannel;
-  totalPrice: number;
-  adults?: number;
-  children?: number;
-  childrenAges?: string;
-  bookingDate?: string;
-  specialRequests?: string;
-  extraBeds?: number;
-  includesBreakfast?: boolean;
-  discount?: number;
-  discountReason?: string;
-  hasCancellationFee?: boolean;
-  cancellationReason?: string;
-  staffId?: number;
+  maDatPhong: number;
+  maDatPhongHienThi: string;
+  maKhachHang: number;
+  maPhong: number;
+  maKenh: number;
+  ngayNhanPhong: string;
+  ngayTraPhong: string;
+  soNguoiLon: number;
+  soTreEm: number;
+  tuoiTreEm: string;
+  ngayDat: string;
+  trangThaiDatPhong: string;
+  coTinhPhiHuy: boolean;
+  lyDoHuy: string | null;
+  yeuCauDacBiet: string | null;
+  tongTien: number;
+  soGiuongPhu: number;
+  coAnSang: boolean;
+  phanTramGiamGia: number;
+  lyDoGiamGia: string | null;
+  maNhanVienDat: number;
+  thongTinKhachHang: {
+    tenKhachHang: string;
+    email: string;
+    soDienThoai: string;
+    quocTich: string;
+    loaiGiayTo: string;
+    soGiayTo: string;
+  };
+  thongTinPhong: {
+    soPhong: string;
+    tenLoaiPhong: string;
+    moTa: string;
+    giaCoBan: number;
+  };
 }
 
 export interface CreateBookingRequest {
@@ -37,8 +57,8 @@ export interface CreateBookingRequest {
   channelId: number;
   checkInDate: string;
   checkOutDate: string;
-  adults?: number;
-  children?: number;
+  adults: number;
+  children: number;
   childrenAges?: string;
   specialRequests?: string;
   extraBeds?: number;

@@ -1,31 +1,61 @@
 import api from './api';
 import { LoginRequest, RegisterRequest, User, AuthResponse } from '../types/user.types';
+import { API_URL } from '../config';
+import { User as UserType } from '../types';
 
-export const login = async (data: LoginRequest): Promise<AuthResponse> => {
-  const response = await api.put<{ messenge: string, data: AuthResponse }>('/users/SignIn', data);
-  return response.data.data;
+// For now, we'll use mock data
+const mockUser: UserType = {
+  userId: 1,
+  username: 'admin',
+  email: 'admin@hotel.com',
+  firstName: 'Admin',
+  lastName: 'User',
+  phoneNumber: '0123456789',
+  dateCreated: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+  roles: ['ADMIN'],
+  isActive: true
 };
 
-export const register = async (data: RegisterRequest): Promise<User> => {
-  const response = await api.post<{ messenge: string, data: User }>('/users/SignUpUser', data);
-  return response.data.data;
-};
+export const authService = {
+  login: async (data: LoginRequest): Promise<{ user: UserType; token: string }> => {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
-export const getCurrentUser = async (email: string): Promise<User> => {
-  const response = await api.get<{ messenge: string, data: User }>('/users/GetUserByEmail', {
-    params: { email }
-  });
-  return response.data.data;
-};
+    // Mock authentication logic
+    if ((data.username === 'admin' && data.password === 'admin123') || 
+        (data.username === 'test' && data.password === 'test123')) {
+      return {
+        user: mockUser,
+        token: 'mock-jwt-token'
+      };
+    }
+    throw new Error('Sai tên đăng nhập hoặc mật khẩu');
+  },
 
-export const addUserRole = async (username: string, roleNameList: string[]): Promise<any> => {
-  const response = await api.get<{ messenge: string, data: any }>('/users/AddRoleForUser', {
-    params: { username, roleNameList }
-  });
-  return response.data.data;
-};
+  register: async (data: { username: string; email: string; password: string }): Promise<void> => {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Register data:', data);
+  },
 
-export const logout = (): void => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+  logout: async (): Promise<void> => {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Clear local storage or any other cleanup
+  },
+
+  getCurrentUser: async (email: string): Promise<UserType> => {
+    const response = await api.get<{ messenge: string, data: UserType }>('/users/GetUserByEmail', {
+      params: { email }
+    });
+    return response.data.data;
+  },
+
+  addUserRole: async (username: string, roleNameList: string[]): Promise<any> => {
+    const response = await api.get<{ messenge: string, data: any }>('/users/AddRoleForUser', {
+      params: { username, roleNameList }
+    });
+    return response.data.data;
+  }
 };

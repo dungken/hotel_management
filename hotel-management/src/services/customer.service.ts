@@ -1,65 +1,79 @@
 import api from './api';
-import { Customer, CreateCustomerRequest } from '../types/customer.types';
+import { Customer } from '../types';
+import { mockCustomers } from './mockData';
 
-export const getCustomers = async (): Promise<Customer[]> => {
-  try {
-    // Mặc dù API không có endpoint riêng cho việc lấy tất cả khách hàng,
-    // chúng ta có thể sử dụng dữ liệu mẫu cho việc demo
-    // Trong môi trường thực tế, bạn sẽ cần thêm endpoint này vào API
-    return [
-      {
-        id: 1,
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        phone: '0123456789',
-        address: '123 Main St'
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        email: 'jane.smith@example.com',
-        phone: '0987654321',
-        address: '456 Oak Ave'
-      }
-    ];
-  } catch (error) {
-    console.error('Error fetching customers:', error);
-    return [];
+// Simulate API delay
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+export const customerService = {
+  // Get all customers
+  getCustomers: async (): Promise<Customer[]> => {
+    try {
+      const response = await api.get<{ message?: string; messenge?: string; data: Customer[] }>('/KhachHang/LayKhachHang');
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+      return mockCustomers;
+    }
+  },
+
+  // Get customer by ID
+  getCustomerById: async (id: number): Promise<Customer | null> => {
+    try {
+      const response = await api.get<{ message?: string; messenge?: string; data: Customer }>(`/KhachHang/LayKhachHang/${id}`);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching customer:', error);
+      return mockCustomers.find(customer => customer.maKhachHang === id) || null;
+    }
+  },
+
+  // Search customers by name or phone number
+  searchCustomers: async (query: string): Promise<Customer[]> => {
+    try {
+      const response = await api.get<{ message?: string; messenge?: string; data: Customer[] }>('/KhachHang/TimKiemKhachHang', {
+        params: { query }
+      });
+      return response.data.data;
+    } catch (error) {
+      console.error('Error searching customers:', error);
+      // Fallback to mock data with local search
+      return mockCustomers.filter(customer => 
+        customer.tenKhachHang.toLowerCase().includes(query.toLowerCase()) ||
+        customer.soDienThoai.includes(query)
+      );
+    }
+  },
+
+  // Create new customer
+  createCustomer: async (customerData: Omit<Customer, 'maKhachHang' | 'diemTichLuy'>): Promise<Customer> => {
+    try {
+      const response = await api.put<{ message?: string; messenge?: string; data: Customer }>('/KhachHang/TaoTaiKhoang', customerData);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error creating customer:', error);
+      throw error;
+    }
+  },
+
+  // Update customer
+  updateCustomer: async (id: number, customerData: Partial<Customer>): Promise<Customer> => {
+    try {
+      const response = await api.put<{ message?: string; messenge?: string; data: Customer }>(`/KhachHang/CapNhatKhachHang/${id}`, customerData);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error updating customer:', error);
+      throw error;
+    }
+  },
+
+  // Delete customer
+  deleteCustomer: async (id: number): Promise<void> => {
+    try {
+      await api.delete(`/KhachHang/XoaKhachHang/${id}`);
+    } catch (error) {
+      console.error('Error deleting customer:', error);
+      throw error;
+    }
   }
-};
-
-export const createCustomer = async (data: CreateCustomerRequest): Promise<Customer> => {
-  // Transform to match API structure
-  const apiData = {
-    tenDayDu: data.name,
-    email: data.email,
-    soDienThoai: data.phone,
-    quocTich: "Vietnam", // Default or pass from form
-    loaiGiayTo: "CMND", // Default or pass from form
-    soGiayTo: "123456789", // Default or pass from form
-    ngaySinh: "1990-01-01" // Default or pass from form
-  };
-
-  const response = await api.put<{ messenge: string, data: any }>('/KhachHang/TaoTaiKhoang', apiData);
-
-  // Map API response to our frontend model
-  return {
-    id: response.data.data.maKhachHang,
-    name: `${response.data.data.ho} ${response.data.data.ten}`,
-    email: response.data.data.email,
-    phone: response.data.data.soDienThoai,
-    address: ''
-  };
-};
-
-export const getCustomerById = async (id: number): Promise<Customer> => {
-  // Note: The API doesn't seem to have an endpoint for getting customers by ID
-  // This is a mock implementation that would need to be updated
-  return {
-    id,
-    name: 'Customer',
-    email: 'customer@example.com',
-    phone: '123456789',
-    address: ''
-  };
 };

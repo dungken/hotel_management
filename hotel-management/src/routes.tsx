@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { isAuthenticated } from './utils/auth.utils';
 import Layout from './components/layout/Layout';
@@ -8,53 +8,80 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 
 // Main pages
-import RoomListPage from './pages/rooms/RoomListPage';
-import BookingPage from './pages/booking/BookingPage';
-import CustomerListPage from './pages/customers/CustomerListPage';
-import PaymentListPage from './pages/payments/PaymentListPage';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
+import Rooms from './pages/Rooms';
+import CreateRoom from './pages/CreateRoom';
+import EditRoom from './pages/EditRoom';
+import Customers from './pages/Customers';
+import CreateCustomer from './pages/CreateCustomer';
+import EditCustomer from './pages/EditCustomer';
+import Bookings from './pages/Bookings';
+import Payments from './pages/Payments';
 import NotFoundPage from './pages/NotFoundPage';
+import CreateBooking from './pages/CreateBooking';
+import EditBooking from './pages/EditBooking';
+import CreatePayment from './pages/CreatePayment';
+import EditPayment from './pages/EditPayment';
+import Login from './pages/Login';
 
-// Protected route component
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const [checkingAuth, setCheckingAuth] = useState(true);
-  const [isAuth, setIsAuth] = useState(false);
-
-  useEffect(() => {
-    const auth = isAuthenticated();
-    setIsAuth(auth);
-    setCheckingAuth(false);
-  }, []);
-
-  if (checkingAuth) {
-    return <div className="flex h-screen items-center justify-center">Loading...</div>;
-  }
-
-  return isAuth ? <>{children}</> : <Navigate to="/login" />;
+const ProtectedRoute = () => {
+  // TODO: Add authentication check
+  const isAuthenticated = true;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      {/* Public routes */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        element: <Layout><Outlet /></Layout>,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: 'rooms',
+            children: [
+              { index: true, element: <Rooms /> },
+              { path: 'create', element: <CreateRoom /> },
+              { path: 'edit/:id', element: <EditRoom /> },
+            ],
+          },
+          {
+            path: 'bookings',
+            children: [
+              { index: true, element: <Bookings /> },
+              { path: 'create', element: <CreateBooking /> },
+              { path: 'edit/:id', element: <EditBooking /> },
+            ],
+          },
+          {
+            path: 'customers',
+            children: [
+              { index: true, element: <Customers /> },
+              { path: 'create', element: <CreateCustomer /> },
+              { path: 'edit/:id', element: <EditCustomer /> },
+            ],
+          },
+          {
+            path: 'payments',
+            children: [
+              { index: true, element: <Payments /> },
+              { path: 'create', element: <CreatePayment /> },
+              { path: 'edit/:id', element: <EditPayment /> },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+]);
 
-      {/* Protected routes */}
-      <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-        <Route index element={<HomePage />} />
-        <Route path="rooms" element={<RoomListPage />} />
-        <Route path="booking" element={<BookingPage />} />
-        <Route path="customers" element={<CustomerListPage />} />
-        <Route path="payments" element={<PaymentListPage />} />
-        <Route path="admin" element={<AdminDashboard />} />
-      </Route>
-
-      <Route path="/not-found" element={<NotFoundPage />} />
-      <Route path="*" element={<Navigate to="/not-found" />} />
-    </Routes>
-  );
-};
-
-export default AppRoutes;
+export default router;

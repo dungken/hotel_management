@@ -1,0 +1,435 @@
+import { 
+  User, 
+  Customer, 
+  Room, 
+  RoomType, 
+  Booking, 
+  Payment, 
+  BookingChannel, 
+  PaymentMethod 
+} from '../types';
+
+// Mock Users
+export const mockUsers: User[] = [
+  {
+    maNguoiDung: 1,
+    tenDangNhap: 'admin',
+    matKhau: 'admin123',
+    hoTen: 'Nguyễn Văn Admin',
+    email: 'admin@example.com',
+    soDienThoai: '0123456789',
+    vaiTro: 'Admin',
+    trangThai: true,
+  },
+  {
+    maNguoiDung: 2,
+    tenDangNhap: 'staff1',
+    matKhau: 'staff123',
+    hoTen: 'Trần Thị Nhân Viên',
+    email: 'staff1@example.com',
+    soDienThoai: '0987654321',
+    vaiTro: 'Staff',
+    trangThai: true,
+  },
+];
+
+// Mock Customers
+export const mockCustomers: Customer[] = [
+  {
+    maKhachHang: 1,
+    tenKhachHang: 'Nguyễn Văn A',
+    email: 'nguyenvana@example.com',
+    soDienThoai: '0123456789',
+    quocTich: 'Việt Nam',
+    loaiGiayTo: 'CCCD',
+    soGiayTo: '001099123456',
+    ngaySinh: '1990-01-01',
+    diemTichLuy: 100,
+  },
+  {
+    maKhachHang: 2,
+    tenKhachHang: 'Trần Thị B',
+    email: 'tranthib@example.com',
+    soDienThoai: '0987654321',
+    quocTich: 'Việt Nam',
+    loaiGiayTo: 'CCCD',
+    soGiayTo: '001099654321',
+    ngaySinh: '1992-02-02',
+    diemTichLuy: 50,
+  },
+];
+
+// Mock Rooms
+export const mockRooms: Room[] = [
+  {
+    maPhong: 1,
+    soPhong: '101',
+    maLoaiPhong: 1,
+    trangThai: 'Trống',
+    ghiChu: 'Tầng 1, view phố',
+  },
+  {
+    maPhong: 2,
+    soPhong: '102',
+    maLoaiPhong: 1,
+    trangThai: 'Đang sử dụng',
+    ghiChu: 'Tầng 1, view phố',
+  },
+  {
+    maPhong: 3,
+    soPhong: '201',
+    maLoaiPhong: 2,
+    trangThai: 'Trống',
+    ghiChu: 'Tầng 2, view biển',
+  },
+];
+
+// Mock Room Types
+export const mockRoomTypes: RoomType[] = [
+  {
+    maLoaiPhong: 1,
+    tenLoaiPhong: 'Phòng Đơn',
+    moTa: 'Phòng 1 giường đơn, phù hợp 1-2 người',
+    soNguoiToiDa: 2,
+    soTreEmToiDa: 1,
+    tuoiToiDaTreEm: 6,
+    giaCoBan: 500000,
+    phiNguoiThem: 100000,
+    phanTramGiamGiaMacDinh: 0,
+    giamGiaLuuTruDai: 10,
+    giamGiaDatSom: 5,
+    trangThai: true,
+  },
+  {
+    maLoaiPhong: 2,
+    tenLoaiPhong: 'Phòng Đôi',
+    moTa: 'Phòng 1 giường đôi, phù hợp 2-3 người',
+    soNguoiToiDa: 3,
+    soTreEmToiDa: 2,
+    tuoiToiDaTreEm: 6,
+    giaCoBan: 800000,
+    phiNguoiThem: 150000,
+    phanTramGiamGiaMacDinh: 0,
+    giamGiaLuuTruDai: 15,
+    giamGiaDatSom: 10,
+    trangThai: true,
+  },
+];
+
+// Mock data for testing
+export const mockBookingChannels: BookingChannel[] = [
+  { maKenh: 1, tenKenh: 'Trực tiếp', moTa: 'Đặt phòng trực tiếp tại khách sạn', trangThai: true },
+  { maKenh: 2, tenKenh: 'Booking.com', moTa: 'Đặt phòng qua Booking.com', trangThai: true },
+  { maKenh: 3, tenKenh: 'Agoda', moTa: 'Đặt phòng qua Agoda', trangThai: true },
+  { maKenh: 4, tenKenh: 'Traveloka', moTa: 'Đặt phòng qua Traveloka', trangThai: true },
+  { maKenh: 5, tenKenh: 'Website', moTa: 'Đặt phòng qua website khách sạn', trangThai: true }
+];
+
+export const mockBookings: Booking[] = [
+  {
+    maDatPhong: 1,
+    maDatPhongHienThi: 'B230001',
+    maKhachHang: 1,
+    maPhong: 101,
+    maKenh: 1,
+    ngayNhanPhong: '2024-03-15T14:00:00',
+    ngayTraPhong: '2024-03-18T12:00:00',
+    soNguoiLon: 2,
+    soTreEm: 1,
+    tuoiTreEm: '5',
+    ngayDat: '2024-03-01T10:30:00',
+    trangThaiDatPhong: 'CONFIRMED',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Phòng tầng cao, view thành phố',
+    tongTien: 2400000,
+    soGiuongPhu: 0,
+    coAnSang: true,
+    phanTramGiamGia: 0,
+    lyDoGiamGia: null,
+    maNhanVienDat: 1,
+    thongTinKhachHang: {
+      tenKhachHang: 'Nguyễn Văn A',
+      email: 'nguyenvana@example.com',
+      soDienThoai: '0123456789',
+      quocTich: 'Việt Nam',
+      loaiGiayTo: 'CCCD',
+      soGiayTo: '001099123456'
+    },
+    thongTinPhong: {
+      soPhong: '101',
+      tenLoaiPhong: 'Phòng Deluxe',
+      moTa: 'Phòng sang trọng với view thành phố',
+      giaCoBan: 800000
+    }
+  },
+  {
+    maDatPhong: 2,
+    maDatPhongHienThi: 'B230002',
+    maKhachHang: 2,
+    maPhong: 202,
+    maKenh: 2,
+    ngayNhanPhong: '2024-03-16T14:00:00',
+    ngayTraPhong: '2024-03-17T12:00:00', 
+    soNguoiLon: 2,
+    soTreEm: 0,
+    tuoiTreEm: '',
+    ngayDat: '2024-03-02T15:45:00',
+    trangThaiDatPhong: 'PENDING',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Late check-in 22:00',
+    tongTien: 1500000,
+    soGiuongPhu: 0,
+    coAnSang: true,
+    phanTramGiamGia: 10,
+    lyDoGiamGia: 'Early bird discount',
+    maNhanVienDat: 1,
+    thongTinKhachHang: {
+      tenKhachHang: 'Trần Thị B',
+      email: 'tranthib@example.com', 
+      soDienThoai: '0987654321',
+      quocTich: 'Việt Nam',
+      loaiGiayTo: 'CCCD',
+      soGiayTo: '001099654321'
+    },
+    thongTinPhong: {
+      soPhong: '202',
+      tenLoaiPhong: 'Phòng Superior',
+      moTa: 'Phòng tiêu chuẩn cao cấp',
+      giaCoBan: 600000
+    }
+  },
+  {
+    maDatPhong: 3,
+    maDatPhongHienThi: 'B230003',
+    maKhachHang: 3,
+    maPhong: 303,
+    maKenh: 3,
+    ngayNhanPhong: '2024-03-20T14:00:00',
+    ngayTraPhong: '2024-03-25T12:00:00',
+    soNguoiLon: 3,
+    soTreEm: 2,
+    tuoiTreEm: '4,7',
+    ngayDat: '2024-02-28T09:15:00',
+    trangThaiDatPhong: 'CONFIRMED',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Thêm nôi cho em bé',
+    tongTien: 5500000,
+    soGiuongPhu: 1,
+    coAnSang: true,
+    phanTramGiamGia: 15,
+    lyDoGiamGia: 'Long stay discount',
+    maNhanVienDat: 2,
+    thongTinKhachHang: {
+      tenKhachHang: 'Lê Văn C',
+      email: 'levanc@example.com',
+      soDienThoai: '0909123456',
+      quocTich: 'Việt Nam', 
+      loaiGiayTo: 'CCCD',
+      soGiayTo: '001099789012'
+    },
+    thongTinPhong: {
+      soPhong: '303',
+      tenLoaiPhong: 'Phòng Suite',
+      moTa: 'Phòng Suite cao cấp với view biển',
+      giaCoBan: 1200000
+    }
+  },
+  {
+    maDatPhong: 4,
+    maDatPhongHienThi: 'B230004',
+    maKhachHang: 4,
+    maPhong: 401,
+    maKenh: 4,
+    ngayNhanPhong: '2024-03-25T14:00:00',
+    ngayTraPhong: '2024-03-27T12:00:00',
+    soNguoiLon: 2,
+    soTreEm: 1,
+    tuoiTreEm: '3',
+    ngayDat: '2024-03-10T11:20:00',
+    trangThaiDatPhong: 'CANCELLED',
+    coTinhPhiHuy: true,
+    lyDoHuy: 'Khách hàng hủy đặt phòng',
+    yeuCauDacBiet: 'Phòng không hút thuốc',
+    tongTien: 1800000,
+    soGiuongPhu: 0,
+    coAnSang: true,
+    phanTramGiamGia: 0,
+    lyDoGiamGia: null,
+    maNhanVienDat: 1,
+    thongTinKhachHang: {
+      tenKhachHang: 'Phạm Thị D',
+      email: 'phamthid@example.com',
+      soDienThoai: '0912345678',
+      quocTich: 'Việt Nam',
+      loaiGiayTo: 'CCCD',
+      soGiayTo: '001099345678'
+    },
+    thongTinPhong: {
+      soPhong: '401',
+      tenLoaiPhong: 'Phòng Deluxe',
+      moTa: 'Phòng sang trọng với ban công',
+      giaCoBan: 900000
+    }
+  },
+  {
+    maDatPhong: 5,
+    maDatPhongHienThi: 'B230005',
+    maKhachHang: 5,
+    maPhong: 502,
+    maKenh: 5,
+    ngayNhanPhong: '2024-04-01T14:00:00',
+    ngayTraPhong: '2024-04-05T12:00:00',
+    soNguoiLon: 4,
+    soTreEm: 2,
+    tuoiTreEm: '5,8',
+    ngayDat: '2024-03-15T16:30:00',
+    trangThaiDatPhong: 'CONFIRMED',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Phòng kết nối, tầng cao',
+    tongTien: 6000000,
+    soGiuongPhu: 2,
+    coAnSang: true,
+    phanTramGiamGia: 20,
+    lyDoGiamGia: 'Group booking discount',
+    maNhanVienDat: 2,
+    thongTinKhachHang: {
+      tenKhachHang: 'Hoàng Văn E',
+      email: 'hoangvane@example.com',
+      soDienThoai: '0978123456',
+      quocTich: 'Việt Nam',
+      loaiGiayTo: 'CCCD',
+      soGiayTo: '001099234567'
+    },
+    thongTinPhong: {
+      soPhong: '502',
+      tenLoaiPhong: 'Family Suite',
+      moTa: 'Phòng Suite gia đình rộng rãi',
+      giaCoBan: 1500000
+    }
+  },
+  {
+    maDatPhong: 6,
+    maDatPhongHienThi: 'B230006',
+    maKhachHang: 6,
+    maPhong: 601,
+    maKenh: 2,
+    ngayNhanPhong: '2024-03-25T14:00:00',
+    ngayTraPhong: '2024-03-28T12:00:00',
+    soNguoiLon: 4,
+    soTreEm: 2,
+    tuoiTreEm: '6,8',
+    ngayDat: '2024-03-12T14:45:00',
+    trangThaiDatPhong: 'PENDING',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Phòng kết nối',
+    tongTien: 4200000,
+    soGiuongPhu: 1,
+    coAnSang: true,
+    phanTramGiamGia: 0,
+    lyDoGiamGia: null,
+    maNhanVienDat: 2
+  },
+  {
+    maDatPhong: 7,
+    maDatPhongHienThi: 'B230007',
+    maKhachHang: 7,
+    maPhong: 701,
+    maKenh: 1,
+    ngayNhanPhong: '2024-03-28T14:00:00',
+    ngayTraPhong: '2024-03-30T12:00:00',
+    soNguoiLon: 2,
+    soTreEm: 0,
+    tuoiTreEm: '',
+    ngayDat: '2024-03-15T10:00:00',
+    trangThaiDatPhong: 'CONFIRMED',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Bánh sinh nhật và trang trí phòng',
+    tongTien: 3200000,
+    soGiuongPhu: 0,
+    coAnSang: true,
+    phanTramGiamGia: 20,
+    lyDoGiamGia: 'Honeymoon package',
+    maNhanVienDat: 1
+  },
+  {
+    maDatPhong: 8,
+    maDatPhongHienThi: 'B230008',
+    maKhachHang: 8,
+    maPhong: 801,
+    maKenh: 3,
+    ngayNhanPhong: '2024-04-01T14:00:00',
+    ngayTraPhong: '2024-04-05T12:00:00',
+    soNguoiLon: 3,
+    soTreEm: 1,
+    tuoiTreEm: '10',
+    ngayDat: '2024-03-16T09:30:00',
+    trangThaiDatPhong: 'PENDING',
+    coTinhPhiHuy: false,
+    lyDoHuy: null,
+    yeuCauDacBiet: 'Airport transfer',
+    tongTien: 6000000,
+    soGiuongPhu: 1,
+    coAnSang: true,
+    phanTramGiamGia: 10,
+    lyDoGiamGia: 'Early bird discount',
+    maNhanVienDat: 3
+  }
+];
+
+// Mock Payments
+export const mockPayments: Payment[] = [
+  {
+    maThanhToan: 1,
+    maDatPhong: 1,
+    maPhuongThuc: 1,
+    ngayThanhToan: '2024-03-17',
+    soTien: 1200000,
+    maGiaoDich: 'PAY001',
+    trangThai: 'Đã thanh toán',
+    soHoaDon: 'INV001',
+    xuatHoaDonVat: true,
+    tenCongTy: 'Công ty TNHH ABC',
+    maSoThue: '0123456789',
+    ghiChu: 'Thanh toán đầy đủ',
+  },
+  {
+    maThanhToan: 2,
+    maDatPhong: 2,
+    maPhuongThuc: 2,
+    ngayThanhToan: '2024-03-15',
+    soTien: 800000,
+    maGiaoDich: 'PAY002',
+    trangThai: 'Đã thanh toán một phần',
+    soHoaDon: 'INV002',
+    xuatHoaDonVat: false,
+    ghiChu: 'Đặt cọc 50%',
+  },
+];
+
+// Mock Payment Methods
+export const mockPaymentMethods: PaymentMethod[] = [
+  {
+    maPhuongThuc: 1,
+    tenPhuongThuc: 'Tiền mặt',
+    moTa: 'Thanh toán bằng tiền mặt',
+    trangThai: true,
+  },
+  {
+    maPhuongThuc: 2,
+    tenPhuongThuc: 'Chuyển khoản',
+    moTa: 'Thanh toán qua chuyển khoản ngân hàng',
+    trangThai: true,
+  },
+  {
+    maPhuongThuc: 3,
+    tenPhuongThuc: 'Thẻ tín dụng',
+    moTa: 'Thanh toán bằng thẻ tín dụng/ghi nợ',
+    trangThai: true,
+  },
+]; 

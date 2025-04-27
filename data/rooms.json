@@ -1,0 +1,109 @@
+{
+  "rooms": [
+    {
+      "maPhong": 1,
+      "soPhong": "101",
+      "maLoaiPhong": 1,
+      "trangThai": "1",
+      "ghiChu": "View thành phố"
+    },
+    {
+      "maPhong": 2,
+      "soPhong": "102",
+      "maLoaiPhong": 2,
+      "trangThai": "1",
+      "ghiChu": "View hồ bơi"
+    },
+    {
+      "maPhong": 3,
+      "soPhong": "201",
+      "maLoaiPhong": 3,
+      "trangThai": "1",
+      "ghiChu": "View biển"
+    },
+    {
+      "maPhong": 4,
+      "soPhong": "202",
+      "maLoaiPhong": 4,
+      "trangThai": "1",
+      "ghiChu": "View núi"
+    },
+    {
+      "maPhong": 5,
+      "soPhong": "301",
+      "maLoaiPhong": 5,
+      "trangThai": "1",
+      "ghiChu": "View toàn cảnh"
+    },
+    {
+      "maPhong": 6,
+      "soPhong": "302",
+      "maLoaiPhong": 6,
+      "trangThai": "1",
+      "ghiChu": "View sông"
+    },
+    {
+      "maPhong": 7,
+      "soPhong": "401",
+      "maLoaiPhong": 7,
+      "trangThai": "1",
+      "ghiChu": "View vườn"
+    },
+    {
+      "maPhong": 8,
+      "soPhong": "402",
+      "maLoaiPhong": 8,
+      "trangThai": "1",
+      "ghiChu": "View công viên"
+    },
+    {
+      "maPhong": 9,
+      "soPhong": "501",
+      "maLoaiPhong": 9,
+      "trangThai": "1",
+      "ghiChu": "View biển"
+    },
+    {
+      "maPhong": 10,
+      "soPhong": "502",
+      "maLoaiPhong": 10,
+      "trangThai": "1",
+      "ghiChu": "View núi"
+    },
+    {
+      "maPhong": 11,
+      "soPhong": "601",
+      "maLoaiPhong": 11,
+      "trangThai": "1",
+      "ghiChu": "View thành phố"
+    },
+    {
+      "maPhong": 12,
+      "soPhong": "602",
+      "maLoaiPhong": 12,
+      "trangThai": "1",
+      "ghiChu": "View hồ bơi"
+    },
+    {
+      "maPhong": 13,
+      "soPhong": "701",
+      "maLoaiPhong": 13,
+      "trangThai": "1",
+      "ghiChu": "View biển"
+    },
+    {
+      "maPhong": 14,
+      "soPhong": "702",
+      "maLoaiPhong": 14,
+      "trangThai": "1",
+      "ghiChu": "View núi"
+    },
+    {
+      "maPhong": 15,
+      "soPhong": "801",
+      "maLoaiPhong": 15,
+      "trangThai": "1",
+      "ghiChu": "View toàn cảnh"
+    }
+  ]
+} 

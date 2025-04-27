@@ -1,0 +1,94 @@
+{
+  "paymentMethods": [
+    {
+      "maPhuongThuc": 1,
+      "tenPhuongThuc": "Tiền mặt",
+      "moTa": "Thanh toán bằng tiền mặt",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 2,
+      "tenPhuongThuc": "Thẻ tín dụng",
+      "moTa": "Thanh toán bằng thẻ tín dụng",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 3,
+      "tenPhuongThuc": "Thẻ ghi nợ",
+      "moTa": "Thanh toán bằng thẻ ghi nợ",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 4,
+      "tenPhuongThuc": "Chuyển khoản ngân hàng",
+      "moTa": "Thanh toán bằng chuyển khoản ngân hàng",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 5,
+      "tenPhuongThuc": "Ví điện tử",
+      "moTa": "Thanh toán bằng ví điện tử",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 6,
+      "tenPhuongThuc": "Momo",
+      "moTa": "Thanh toán qua ví MoMo",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 7,
+      "tenPhuongThuc": "ZaloPay",
+      "moTa": "Thanh toán qua ZaloPay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 8,
+      "tenPhuongThuc": "VNPay",
+      "moTa": "Thanh toán qua VNPay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 9,
+      "tenPhuongThuc": "PayPal",
+      "moTa": "Thanh toán qua PayPal",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 10,
+      "tenPhuongThuc": "Apple Pay",
+      "moTa": "Thanh toán qua Apple Pay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 11,
+      "tenPhuongThuc": "Google Pay",
+      "moTa": "Thanh toán qua Google Pay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 12,
+      "tenPhuongThuc": "Samsung Pay",
+      "moTa": "Thanh toán qua Samsung Pay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 13,
+      "tenPhuongThuc": "ShopeePay",
+      "moTa": "Thanh toán qua ShopeePay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 14,
+      "tenPhuongThuc": "GrabPay",
+      "moTa": "Thanh toán qua GrabPay",
+      "trangThai": true
+    },
+    {
+      "maPhuongThuc": 15,
+      "tenPhuongThuc": "ViettelPay",
+      "moTa": "Thanh toán qua ViettelPay",
+      "trangThai": true
+    }
+  ]
+} 

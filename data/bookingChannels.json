@@ -1,0 +1,94 @@
+{
+  "bookingChannels": [
+    {
+      "maKenh": 1,
+      "tenKenh": "Direct Booking",
+      "moTa": "Đặt phòng trực tiếp qua website",
+      "trangThai": true
+    },
+    {
+      "maKenh": 2,
+      "tenKenh": "Booking.com",
+      "moTa": "Đặt phòng qua Booking.com",
+      "trangThai": true
+    },
+    {
+      "maKenh": 3,
+      "tenKenh": "Agoda",
+      "moTa": "Đặt phòng qua Agoda",
+      "trangThai": true
+    },
+    {
+      "maKenh": 4,
+      "tenKenh": "Expedia",
+      "moTa": "Đặt phòng qua Expedia",
+      "trangThai": true
+    },
+    {
+      "maKenh": 5,
+      "tenKenh": "Hotels.com",
+      "moTa": "Đặt phòng qua Hotels.com",
+      "trangThai": true
+    },
+    {
+      "maKenh": 6,
+      "tenKenh": "TripAdvisor",
+      "moTa": "Đặt phòng qua TripAdvisor",
+      "trangThai": true
+    },
+    {
+      "maKenh": 7,
+      "tenKenh": "Airbnb",
+      "moTa": "Đặt phòng qua Airbnb",
+      "trangThai": true
+    },
+    {
+      "maKenh": 8,
+      "tenKenh": "Traveloka",
+      "moTa": "Đặt phòng qua Traveloka",
+      "trangThai": true
+    },
+    {
+      "maKenh": 9,
+      "tenKenh": "Goibibo",
+      "moTa": "Đặt phòng qua Goibibo",
+      "trangThai": true
+    },
+    {
+      "maKenh": 10,
+      "tenKenh": "MakeMyTrip",
+      "moTa": "Đặt phòng qua MakeMyTrip",
+      "trangThai": true
+    },
+    {
+      "maKenh": 11,
+      "tenKenh": "Yatra",
+      "moTa": "Đặt phòng qua Yatra",
+      "trangThai": true
+    },
+    {
+      "maKenh": 12,
+      "tenKenh": "Cleartrip",
+      "moTa": "Đặt phòng qua Cleartrip",
+      "trangThai": true
+    },
+    {
+      "maKenh": 13,
+      "tenKenh": "Oyo Rooms",
+      "moTa": "Đặt phòng qua Oyo Rooms",
+      "trangThai": true
+    },
+    {
+      "maKenh": 14,
+      "tenKenh": "Trivago",
+      "moTa": "Đặt phòng qua Trivago",
+      "trangThai": true
+    },
+    {
+      "maKenh": 15,
+      "tenKenh": "Hotwire",
+      "moTa": "Đặt phòng qua Hotwire",
+      "trangThai": true
+    }
+  ]
+} 

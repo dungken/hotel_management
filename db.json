@@ -1,0 +1,1228 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "username": "admin",
+      "email": "admin@hotel.com",
+      "dateCreated": "2024-01-01T00:00:00",
+      "roles": [
+        "ADMIN"
+      ]
+    },
+    {
+      "userId": 2,
+      "username": "manager",
+      "email": "manager@hotel.com",
+      "dateCreated": "2024-01-02T00:00:00",
+      "roles": [
+        "MANAGER"
+      ]
+    },
+    {
+      "userId": 3,
+      "username": "receptionist1",
+      "email": "receptionist1@hotel.com",
+      "dateCreated": "2024-01-03T00:00:00",
+      "roles": [
+        "RECEPTIONIST"
+      ]
+    },
+    {
+      "userId": 4,
+      "username": "receptionist2",
+      "email": "receptionist2@hotel.com",
+      "dateCreated": "2024-01-04T00:00:00",
+      "roles": [
+        "RECEPTIONIST"
+      ]
+    },
+    {
+      "userId": 5,
+      "username": "staff1",
+      "email": "staff1@hotel.com",
+      "dateCreated": "2024-01-05T00:00:00",
+      "roles": [
+        "STAFF"
+      ]
+    },
+    {
+      "userId": 6,
+      "username": "staff2",
+      "email": "staff2@hotel.com",
+      "dateCreated": "2024-01-06T00:00:00",
+      "roles": [
+        "STAFF"
+      ]
+    },
+    {
+      "userId": 7,
+      "username": "accountant1",
+      "email": "accountant1@hotel.com",
+      "dateCreated": "2024-01-07T00:00:00",
+      "roles": [
+        "ACCOUNTANT"
+      ]
+    },
+    {
+      "userId": 8,
+      "username": "accountant2",
+      "email": "accountant2@hotel.com",
+      "dateCreated": "2024-01-08T00:00:00",
+      "roles": [
+        "ACCOUNTANT"
+      ]
+    },
+    {
+      "userId": 9,
+      "username": "housekeeper1",
+      "email": "housekeeper1@hotel.com",
+      "dateCreated": "2024-01-09T00:00:00",
+      "roles": [
+        "HOUSEKEEPER"
+      ]
+    },
+    {
+      "userId": 10,
+      "username": "housekeeper2",
+      "email": "housekeeper2@hotel.com",
+      "dateCreated": "2024-01-10T00:00:00",
+      "roles": [
+        "HOUSEKEEPER"
+      ]
+    },
+    {
+      "userId": 11,
+      "username": "chef1",
+      "email": "chef1@hotel.com",
+      "dateCreated": "2024-01-11T00:00:00",
+      "roles": [
+        "CHEF"
+      ]
+    },
+    {
+      "userId": 12,
+      "username": "chef2",
+      "email": "chef2@hotel.com",
+      "dateCreated": "2024-01-12T00:00:00",
+      "roles": [
+        "CHEF"
+      ]
+    },
+    {
+      "userId": 13,
+      "username": "security1",
+      "email": "security1@hotel.com",
+      "dateCreated": "2024-01-13T00:00:00",
+      "roles": [
+        "SECURITY"
+      ]
+    },
+    {
+      "userId": 14,
+      "username": "security2",
+      "email": "security2@hotel.com",
+      "dateCreated": "2024-01-14T00:00:00",
+      "roles": [
+        "SECURITY"
+      ]
+    },
+    {
+      "userId": 15,
+      "username": "maintenance",
+      "email": "maintenance@hotel.com",
+      "dateCreated": "2024-01-15T00:00:00",
+      "roles": [
+        "MAINTENANCE"
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "customerId": 1,
+      "name": "Nguyễn Văn A",
+      "email": "nguyenvana@gmail.com",
+      "phone": "0123456789",
+      "address": "Hà Nội, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CMND",
+      "idNumber": "123456789",
+      "dateOfBirth": "1990-01-01",
+      "customerType": 1,
+      "registrationDate": "2024-01-01T00:00:00",
+      "loyaltyPoints": 100
+    },
+    {
+      "customerId": 2,
+      "name": "Trần Thị B",
+      "email": "tranthib@gmail.com",
+      "phone": "0987654321",
+      "address": "TP.HCM, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CCCD",
+      "idNumber": "987654321",
+      "dateOfBirth": "1992-02-02",
+      "customerType": 2,
+      "registrationDate": "2024-01-02T00:00:00",
+      "loyaltyPoints": 200
+    },
+    {
+      "customerId": 3,
+      "name": "John Smith",
+      "email": "johnsmith@gmail.com",
+      "phone": "1234567890",
+      "address": "New York, USA",
+      "nationality": "United States",
+      "idType": "Passport",
+      "idNumber": "P123456789",
+      "dateOfBirth": "1985-03-03",
+      "customerType": 3,
+      "registrationDate": "2024-01-03T00:00:00",
+      "loyaltyPoints": 300
+    },
+    {
+      "customerId": 4,
+      "name": "Maria Garcia",
+      "email": "mariagarcia@gmail.com",
+      "phone": "2345678901",
+      "address": "Madrid, Spain",
+      "nationality": "Spain",
+      "idType": "Passport",
+      "idNumber": "P234567890",
+      "dateOfBirth": "1988-04-04",
+      "customerType": 2,
+      "registrationDate": "2024-01-04T00:00:00",
+      "loyaltyPoints": 150
+    },
+    {
+      "customerId": 5,
+      "name": "Lê Văn C",
+      "email": "levanc@gmail.com",
+      "phone": "3456789012",
+      "address": "Đà Nẵng, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CMND",
+      "idNumber": "345678901",
+      "dateOfBirth": "1995-05-05",
+      "customerType": 1,
+      "registrationDate": "2024-01-05T00:00:00",
+      "loyaltyPoints": 50
+    },
+    {
+      "customerId": 6,
+      "name": "Phạm Thị D",
+      "email": "phamthid@gmail.com",
+      "phone": "4567890123",
+      "address": "Hải Phòng, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CCCD",
+      "idNumber": "456789012",
+      "dateOfBirth": "1993-06-06",
+      "customerType": 2,
+      "registrationDate": "2024-01-06T00:00:00",
+      "loyaltyPoints": 250
+    },
+    {
+      "customerId": 7,
+      "name": "David Brown",
+      "email": "davidbrown@gmail.com",
+      "phone": "5678901234",
+      "address": "London, UK",
+      "nationality": "United Kingdom",
+      "idType": "Passport",
+      "idNumber": "P567890123",
+      "dateOfBirth": "1987-07-07",
+      "customerType": 3,
+      "registrationDate": "2024-01-07T00:00:00",
+      "loyaltyPoints": 400
+    },
+    {
+      "customerId": 8,
+      "name": "Sarah Johnson",
+      "email": "sarahjohnson@gmail.com",
+      "phone": "6789012345",
+      "address": "Sydney, Australia",
+      "nationality": "Australia",
+      "idType": "Passport",
+      "idNumber": "P678901234",
+      "dateOfBirth": "1991-08-08",
+      "customerType": 2,
+      "registrationDate": "2024-01-08T00:00:00",
+      "loyaltyPoints": 180
+    },
+    {
+      "customerId": 9,
+      "name": "Hoàng Văn E",
+      "email": "hoangvane@gmail.com",
+      "phone": "7890123456",
+      "address": "Cần Thơ, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CMND",
+      "idNumber": "789012345",
+      "dateOfBirth": "1994-09-09",
+      "customerType": 1,
+      "registrationDate": "2024-01-09T00:00:00",
+      "loyaltyPoints": 75
+    },
+    {
+      "customerId": 10,
+      "name": "Đỗ Thị F",
+      "email": "dothif@gmail.com",
+      "phone": "8901234567",
+      "address": "Nha Trang, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CCCD",
+      "idNumber": "890123456",
+      "dateOfBirth": "1996-10-10",
+      "customerType": 2,
+      "registrationDate": "2024-01-10T00:00:00",
+      "loyaltyPoints": 300
+    },
+    {
+      "customerId": 11,
+      "name": "Michael Wilson",
+      "email": "michaelwilson@gmail.com",
+      "phone": "9012345678",
+      "address": "Toronto, Canada",
+      "nationality": "Canada",
+      "idType": "Passport",
+      "idNumber": "P901234567",
+      "dateOfBirth": "1989-11-11",
+      "customerType": 3,
+      "registrationDate": "2024-01-11T00:00:00",
+      "loyaltyPoints": 450
+    },
+    {
+      "customerId": 12,
+      "name": "Emma Davis",
+      "email": "emmadavis@gmail.com",
+      "phone": "0123456789",
+      "address": "Auckland, New Zealand",
+      "nationality": "New Zealand",
+      "idType": "Passport",
+      "idNumber": "P012345678",
+      "dateOfBirth": "1992-12-12",
+      "customerType": 2,
+      "registrationDate": "2024-01-12T00:00:00",
+      "loyaltyPoints": 220
+    },
+    {
+      "customerId": 13,
+      "name": "Vũ Văn G",
+      "email": "vuvang@gmail.com",
+      "phone": "1234567890",
+      "address": "Huế, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CMND",
+      "idNumber": "123456789",
+      "dateOfBirth": "1997-01-13",
+      "customerType": 1,
+      "registrationDate": "2024-01-13T00:00:00",
+      "loyaltyPoints": 90
+    },
+    {
+      "customerId": 14,
+      "name": "Bùi Thị H",
+      "email": "buithih@gmail.com",
+      "phone": "2345678901",
+      "address": "Quy Nhơn, Việt Nam",
+      "nationality": "Việt Nam",
+      "idType": "CCCD",
+      "idNumber": "234567890",
+      "dateOfBirth": "1998-02-14",
+      "customerType": 2,
+      "registrationDate": "2024-01-14T00:00:00",
+      "loyaltyPoints": 350
+    },
+    {
+      "customerId": 15,
+      "name": "James Taylor",
+      "email": "jamestaylor@gmail.com",
+      "phone": "3456789012",
+      "address": "Dublin, Ireland",
+      "nationality": "Ireland",
+      "idType": "Passport",
+      "idNumber": "P345678901",
+      "dateOfBirth": "1990-03-15",
+      "customerType": 3,
+      "registrationDate": "2024-01-15T00:00:00",
+      "loyaltyPoints": 500
+    }
+  ],
+  "roomTypes": [
+    {
+      "roomTypeId": 1,
+      "name": "Standard Single",
+      "description": "Phòng đơn tiêu chuẩn với giường đơn",
+      "maxAdults": 1,
+      "maxChildren": 0,
+      "maxChildAge": 0,
+      "basePrice": 500000,
+      "extraPersonFee": 0,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 2,
+      "name": "Standard Double",
+      "description": "Phòng đôi tiêu chuẩn với giường đôi",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 800000,
+      "extraPersonFee": 200000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 3,
+      "name": "Deluxe Single",
+      "description": "Phòng đơn cao cấp với view thành phố",
+      "maxAdults": 1,
+      "maxChildren": 0,
+      "maxChildAge": 0,
+      "basePrice": 700000,
+      "extraPersonFee": 0,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 4,
+      "name": "Deluxe Double",
+      "description": "Phòng đôi cao cấp với view thành phố",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 1000000,
+      "extraPersonFee": 250000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 5,
+      "name": "Suite Single",
+      "description": "Suite đơn với phòng khách riêng",
+      "maxAdults": 1,
+      "maxChildren": 0,
+      "maxChildAge": 0,
+      "basePrice": 1200000,
+      "extraPersonFee": 0,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 6,
+      "name": "Suite Double",
+      "description": "Suite đôi với phòng khách riêng",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 1500000,
+      "extraPersonFee": 300000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 7,
+      "name": "Family Room",
+      "description": "Phòng gia đình với 2 phòng ngủ",
+      "maxAdults": 4,
+      "maxChildren": 2,
+      "maxChildAge": 12,
+      "basePrice": 2000000,
+      "extraPersonFee": 400000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 8,
+      "name": "Executive Suite",
+      "description": "Suite thương gia với phòng họp",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 2500000,
+      "extraPersonFee": 500000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 9,
+      "name": "Presidential Suite",
+      "description": "Suite tổng thống với view toàn cảnh",
+      "maxAdults": 4,
+      "maxChildren": 2,
+      "maxChildAge": 12,
+      "basePrice": 5000000,
+      "extraPersonFee": 1000000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 10,
+      "name": "Connecting Rooms",
+      "description": "2 phòng kết nối với nhau",
+      "maxAdults": 4,
+      "maxChildren": 2,
+      "maxChildAge": 12,
+      "basePrice": 1800000,
+      "extraPersonFee": 350000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 11,
+      "name": "Accessible Room",
+      "description": "Phòng dành cho người khuyết tật",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 900000,
+      "extraPersonFee": 200000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 12,
+      "name": "Honeymoon Suite",
+      "description": "Suite dành cho tuần trăng mật",
+      "maxAdults": 2,
+      "maxChildren": 0,
+      "maxChildAge": 0,
+      "basePrice": 3000000,
+      "extraPersonFee": 0,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 13,
+      "name": "Pool View Room",
+      "description": "Phòng view hồ bơi",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 1100000,
+      "extraPersonFee": 250000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 14,
+      "name": "Garden View Room",
+      "description": "Phòng view vườn",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 950000,
+      "extraPersonFee": 200000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    },
+    {
+      "roomTypeId": 15,
+      "name": "City View Room",
+      "description": "Phòng view thành phố",
+      "maxAdults": 2,
+      "maxChildren": 1,
+      "maxChildAge": 12,
+      "basePrice": 850000,
+      "extraPersonFee": 200000,
+      "defaultDiscountPercent": 0,
+      "longStayDiscount": 5,
+      "earlyBookingDiscount": 10,
+      "status": true
+    }
+  ],
+  "rooms": [
+    {
+      "roomId": 1,
+      "roomNumber": "101",
+      "roomTypeId": 1,
+      "status": "AVAILABLE",
+      "notes": "View thành phố"
+    },
+    {
+      "roomId": 2,
+      "roomNumber": "102",
+      "roomTypeId": 2,
+      "status": "AVAILABLE",
+      "notes": "View hồ bơi"
+    },
+    {
+      "roomId": 3,
+      "roomNumber": "201",
+      "roomTypeId": 3,
+      "status": "AVAILABLE",
+      "notes": "View biển"
+    },
+    {
+      "roomId": 4,
+      "roomNumber": "202",
+      "roomTypeId": 4,
+      "status": "AVAILABLE",
+      "notes": "View núi"
+    },
+    {
+      "roomId": 5,
+      "roomNumber": "301",
+      "roomTypeId": 5,
+      "status": "AVAILABLE",
+      "notes": "View toàn cảnh"
+    },
+    {
+      "roomId": 6,
+      "roomNumber": "302",
+      "roomTypeId": 6,
+      "status": "AVAILABLE",
+      "notes": "View sông"
+    },
+    {
+      "roomId": 7,
+      "roomNumber": "401",
+      "roomTypeId": 7,
+      "status": "AVAILABLE",
+      "notes": "View vườn"
+    },
+    {
+      "roomId": 8,
+      "roomNumber": "402",
+      "roomTypeId": 8,
+      "status": "AVAILABLE",
+      "notes": "View công viên"
+    },
+    {
+      "roomId": 9,
+      "roomNumber": "501",
+      "roomTypeId": 9,
+      "status": "AVAILABLE",
+      "notes": "View biển"
+    },
+    {
+      "roomId": 10,
+      "roomNumber": "502",
+      "roomTypeId": 10,
+      "status": "AVAILABLE",
+      "notes": "View núi"
+    },
+    {
+      "roomId": 11,
+      "roomNumber": "601",
+      "roomTypeId": 11,
+      "status": "AVAILABLE",
+      "notes": "View thành phố"
+    },
+    {
+      "roomId": 12,
+      "roomNumber": "602",
+      "roomTypeId": 12,
+      "status": "AVAILABLE",
+      "notes": "View hồ bơi"
+    },
+    {
+      "roomId": 13,
+      "roomNumber": "701",
+      "roomTypeId": 13,
+      "status": "AVAILABLE",
+      "notes": "View biển"
+    },
+    {
+      "roomId": 14,
+      "roomNumber": "702",
+      "roomTypeId": 14,
+      "status": "AVAILABLE",
+      "notes": "View núi"
+    },
+    {
+      "roomId": 15,
+      "roomNumber": "801",
+      "roomTypeId": 15,
+      "status": "AVAILABLE",
+      "notes": "View toàn cảnh"
+    }
+  ],
+  "bookingChannels": [
+    {
+      "channelId": 1,
+      "name": "Direct Booking",
+      "description": "Đặt phòng trực tiếp qua website",
+      "status": true
+    },
+    {
+      "channelId": 2,
+      "name": "Booking.com",
+      "description": "Đặt phòng qua Booking.com",
+      "status": true
+    },
+    {
+      "channelId": 3,
+      "name": "Agoda",
+      "description": "Đặt phòng qua Agoda",
+      "status": true
+    },
+    {
+      "channelId": 4,
+      "name": "Expedia",
+      "description": "Đặt phòng qua Expedia",
+      "status": true
+    },
+    {
+      "channelId": 5,
+      "name": "Hotels.com",
+      "description": "Đặt phòng qua Hotels.com",
+      "status": true
+    },
+    {
+      "channelId": 6,
+      "name": "TripAdvisor",
+      "description": "Đặt phòng qua TripAdvisor",
+      "status": true
+    },
+    {
+      "channelId": 7,
+      "name": "Airbnb",
+      "description": "Đặt phòng qua Airbnb",
+      "status": true
+    },
+    {
+      "channelId": 8,
+      "name": "Traveloka",
+      "description": "Đặt phòng qua Traveloka",
+      "status": true
+    },
+    {
+      "channelId": 9,
+      "name": "Goibibo",
+      "description": "Đặt phòng qua Goibibo",
+      "status": true
+    },
+    {
+      "channelId": 10,
+      "name": "MakeMyTrip",
+      "description": "Đặt phòng qua MakeMyTrip",
+      "status": true
+    },
+    {
+      "channelId": 11,
+      "name": "Yatra",
+      "description": "Đặt phòng qua Yatra",
+      "status": true
+    },
+    {
+      "channelId": 12,
+      "name": "Cleartrip",
+      "description": "Đặt phòng qua Cleartrip",
+      "status": true
+    },
+    {
+      "channelId": 13,
+      "name": "Oyo Rooms",
+      "description": "Đặt phòng qua Oyo Rooms",
+      "status": true
+    },
+    {
+      "channelId": 14,
+      "name": "Trivago",
+      "description": "Đặt phòng qua Trivago",
+      "status": true
+    },
+    {
+      "channelId": 15,
+      "name": "Hotwire",
+      "description": "Đặt phòng qua Hotwire",
+      "status": true
+    }
+  ],
+  "paymentMethods": [
+    {
+      "paymentMethodId": 1,
+      "name": "Tiền mặt",
+      "description": "Thanh toán bằng tiền mặt",
+      "status": true
+    },
+    {
+      "paymentMethodId": 2,
+      "name": "Thẻ tín dụng",
+      "description": "Thanh toán bằng thẻ tín dụng",
+      "status": true
+    },
+    {
+      "paymentMethodId": 3,
+      "name": "Thẻ ghi nợ",
+      "description": "Thanh toán bằng thẻ ghi nợ",
+      "status": true
+    },
+    {
+      "paymentMethodId": 4,
+      "name": "Chuyển khoản ngân hàng",
+      "description": "Thanh toán bằng chuyển khoản ngân hàng",
+      "status": true
+    },
+    {
+      "paymentMethodId": 5,
+      "name": "Ví điện tử",
+      "description": "Thanh toán bằng ví điện tử",
+      "status": true
+    },
+    {
+      "paymentMethodId": 6,
+      "name": "Momo",
+      "description": "Thanh toán qua ví MoMo",
+      "status": true
+    },
+    {
+      "paymentMethodId": 7,
+      "name": "ZaloPay",
+      "description": "Thanh toán qua ZaloPay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 8,
+      "name": "VNPay",
+      "description": "Thanh toán qua VNPay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 9,
+      "name": "PayPal",
+      "description": "Thanh toán qua PayPal",
+      "status": true
+    },
+    {
+      "paymentMethodId": 10,
+      "name": "Apple Pay",
+      "description": "Thanh toán qua Apple Pay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 11,
+      "name": "Google Pay",
+      "description": "Thanh toán qua Google Pay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 12,
+      "name": "Samsung Pay",
+      "description": "Thanh toán qua Samsung Pay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 13,
+      "name": "ShopeePay",
+      "description": "Thanh toán qua ShopeePay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 14,
+      "name": "GrabPay",
+      "description": "Thanh toán qua GrabPay",
+      "status": true
+    },
+    {
+      "paymentMethodId": 15,
+      "name": "ViettelPay",
+      "description": "Thanh toán qua ViettelPay",
+      "status": true
+    }
+  ],
+  "bookings": [
+    {
+      "bookingId": 1,
+      "bookingCode": "DP001",
+      "customerId": 1,
+      "roomId": 1,
+      "channelId": 1,
+      "checkInDate": "2024-04-01T14:00:00",
+      "checkOutDate": "2024-04-03T12:00:00",
+      "adults": 2,
+      "children": 0,
+      "childAges": "",
+      "bookingDate": "2024-03-25T10:00:00",
+      "status": "PENDING",
+      "hasCancellationFee": false,
+      "cancellationReason": null,
+      "specialRequests": "Late check-in",
+      "totalAmount": 1000000,
+      "extraBeds": 0,
+      "includesBreakfast": true,
+      "discountPercent": 0,
+      "discountReason": null,
+      "staffId": 1
+    },
+    {
+      "bookingId": 2,
+      "bookingCode": "DP002",
+      "customerId": 2,
+      "roomId": 2,
+      "channelId": 2,
+      "checkInDate": "2024-04-02T14:00:00",
+      "checkOutDate": "2024-04-04T12:00:00",
+      "adults": 2,
+      "children": 1,
+      "childAges": "10",
+      "bookingDate": "2024-03-26T11:00:00",
+      "status": "CONFIRMED",
+      "hasCancellationFee": true,
+      "cancellationReason": null,
+      "specialRequests": "Early check-in",
+      "totalAmount": 1600000,
+      "extraBeds": 1,
+      "includesBreakfast": true,
+      "discountPercent": 10,
+      "discountReason": "Khách hàng thân thiết",
+      "staffId": 2
+    },
+    {
+      "bookingId": 3,
+      "bookingCode": "DP003",
+      "customerId": 3,
+      "roomId": 3,
+      "channelId": 3,
+      "checkInDate": "2024-04-03T14:00:00",
+      "checkOutDate": "2024-04-05T12:00:00",
+      "adults": 1,
+      "children": 0,
+      "childAges": "",
+      "bookingDate": "2024-03-27T12:00:00",
+      "status": "CANCELLED",
+      "hasCancellationFee": true,
+      "cancellationReason": "Change of plans",
+      "specialRequests": "None",
+      "totalAmount": 1400000,
+      "extraBeds": 0,
+      "includesBreakfast": true,
+      "discountPercent": 0,
+      "discountReason": null,
+      "staffId": 3
+    },
+    {
+      "bookingId": 4,
+      "bookingCode": "DP004",
+      "customerId": 4,
+      "roomId": 4,
+      "channelId": 4,
+      "checkInDate": "2024-04-04T14:00:00",
+      "checkOutDate": "2024-04-06T12:00:00",
+      "adults": 2,
+      "children": 1,
+      "childAges": "8",
+      "bookingDate": "2024-03-28T13:00:00",
+      "status": "COMPLETED",
+      "hasCancellationFee": false,
+      "cancellationReason": null,
+      "specialRequests": "Extra pillows",
+      "totalAmount": 2000000,
+      "extraBeds": 1,
+      "includesBreakfast": true,
+      "discountPercent": 5,
+      "discountReason": "Long stay discount",
+      "staffId": 4
+    },
+    {
+      "bookingId": 5,
+      "bookingCode": "DP005",
+      "customerId": 5,
+      "roomId": 5,
+      "channelId": 5,
+      "checkInDate": "2024-04-05T14:00:00",
+      "checkOutDate": "2024-04-07T12:00:00",
+      "adults": 1,
+      "children": 0,
+      "childAges": "",
+      "bookingDate": "2024-03-29T14:00:00",
+      "status": "PENDING",
+      "hasCancellationFee": false,
+      "cancellationReason": null,
+      "specialRequests": "None",
+      "totalAmount": 2400000,
+      "extraBeds": 0,
+      "includesBreakfast": true,
+      "discountPercent": 0,
+      "discountReason": null,
+      "staffId": 5
+    },
+    {
+      "bookingId": 6,
+      "bookingCode": "DP006",
+      "customerId": 6,
+      "roomId": 6,
+      "channelId": 6,
+      "checkInDate": "2024-04-06T14:00:00",
+      "checkOutDate": "2024-04-08T12:00:00",
+      "adults": 2,
+      "children": 1,
+      "childAges": "6",
+      "bookingDate": "2024-03-30T15:00:00",
+      "status": "CONFIRMED",
+      "hasCancellationFee": true,
+      "cancellationReason": null,
+      "specialRequests": "Baby cot needed",
+      "totalAmount": 3000000,
+      "extraBeds": 1,
+      "includesBreakfast": true,
+      "discountPercent": 10,
+      "discountReason": "Early booking discount",
+      "staffId": 6
+    },
+    {
+      "bookingId": 7,
+      "bookingCode": "DP007",
+      "customerId": 7,
+      "roomId": 7,
+      "channelId": 7,
+      "checkInDate": "2024-04-07T14:00:00",
+      "checkOutDate": "2024-04-09T12:00:00",
+      "adults": 4,
+      "children": 2,
+      "childAges": "10,8",
+      "bookingDate": "2024-03-31T16:00:00",
+      "status": "CANCELLED",
+      "hasCancellationFee": true,
+      "cancellationReason": "Family emergency",
+      "specialRequests": "Family room needed",
+      "totalAmount": 4000000,
+      "extraBeds": 2,
+      "includesBreakfast": true,
+      "discountPercent": 5,
+      "discountReason": "Family package",
+      "staffId": 7
+    },
+    {
+      "bookingId": 8,
+      "bookingCode": "DP008",
+      "customerId": 8,
+      "roomId": 8,
+      "channelId": 8,
+      "checkInDate": "2024-04-08T14:00:00",
+      "checkOutDate": "2024-04-10T12:00:00",
+      "adults": 2,
+      "children": 1,
+      "childAges": "12",
+      "bookingDate": "2024-04-01T17:00:00",
+      "status": "COMPLETED",
+      "hasCancellationFee": false,
+      "cancellationReason": null,
+      "specialRequests": "None",
+      "totalAmount": 5000000,
+      "extraBeds": 1,
+      "includesBreakfast": true,
+      "discountPercent": 0,
+      "discountReason": null,
+      "staffId": 8
+    },
+    {
+      "bookingId": 9,
+      "bookingCode": "DP009",
+      "customerId": 9,
+      "roomId": 9,
+      "channelId": 9,
+      "checkInDate": "2024-04-09T14:00:00",
+      "checkOutDate": "2024-04-11T12:00:00",
+      "adults": 2,
+      "children": 0,
+      "childAges": "",
+      "bookingDate": "2024-04-02T18:00:00",
+      "status": "PENDING",
+      "hasCancellationFee": false,
+      "cancellationReason": null,
+      "specialRequests": "Honeymoon package",
+      "totalAmount": 6000000,
+      "extraBeds": 0,
+      "includesBreakfast": true,
+      "discountPercent": 15,
+      "discountReason": "Honeymoon special",
+      "staffId": 9
+    },
+    {
+      "bookingId": 10,
+      "bookingCode": "DP010",
+      "customerId": 10,
+      "roomId": 10,
+      "channelId": 10,
+      "checkInDate": "2024-04-10T14:00:00",
+      "checkOutDate": "2024-04-12T12:00:00",
+      "adults": 4,
+      "children": 2,
+      "childAges": "9,7",
+      "bookingDate": "2024-04-03T19:00:00",
+      "status": "CONFIRMED",
+      "hasCancellationFee": true,
+      "cancellationReason": null,
+      "specialRequests": "Connecting rooms needed",
+      "totalAmount": 3600000,
+      "extraBeds": 2,
+      "includesBreakfast": true,
+      "discountPercent": 10,
+      "discountReason": "Family package",
+      "staffId": 10
+    }
+  ],
+  "payments": [
+    {
+      "paymentId": 1,
+      "bookingId": 1,
+      "paymentMethodId": 1,
+      "paymentDate": "2024-03-25T10:30:00",
+      "amount": 1000000,
+      "transactionId": "TXN001",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV001",
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Thanh toán đầy đủ"
+    },
+    {
+      "paymentId": 2,
+      "bookingId": 2,
+      "paymentMethodId": 2,
+      "paymentDate": "2024-03-26T11:30:00",
+      "amount": 1600000,
+      "transactionId": "TXN002",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV002",
+      "isVAT": true,
+      "companyName": "ABC Company",
+      "taxNumber": "123456789",
+      "notes": "Thanh toán công ty"
+    },
+    {
+      "paymentId": 3,
+      "bookingId": 3,
+      "paymentMethodId": 3,
+      "paymentDate": "2024-03-27T12:30:00",
+      "amount": 1400000,
+      "transactionId": "TXN003",
+      "status": "REFUNDED",
+      "invoiceNumber": "INV003",
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Hoàn tiền do hủy phòng"
+    },
+    {
+      "paymentId": 4,
+      "bookingId": 4,
+      "paymentMethodId": 4,
+      "paymentDate": "2024-03-28T13:30:00",
+      "amount": 2000000,
+      "transactionId": "TXN004",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV004",
+      "isVAT": true,
+      "companyName": "XYZ Corporation",
+      "taxNumber": "987654321",
+      "notes": "Thanh toán công ty"
+    },
+    {
+      "paymentId": 5,
+      "bookingId": 5,
+      "paymentMethodId": 5,
+      "paymentDate": "2024-03-29T14:30:00",
+      "amount": 2400000,
+      "transactionId": "TXN005",
+      "status": "PENDING",
+      "invoiceNumber": null,
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Chờ xác nhận"
+    },
+    {
+      "paymentId": 6,
+      "bookingId": 6,
+      "paymentMethodId": 6,
+      "paymentDate": "2024-03-30T15:30:00",
+      "amount": 3000000,
+      "transactionId": "TXN006",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV006",
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Thanh toán qua MoMo"
+    },
+    {
+      "paymentId": 7,
+      "bookingId": 7,
+      "paymentMethodId": 7,
+      "paymentDate": "2024-03-31T16:30:00",
+      "amount": 4000000,
+      "transactionId": "TXN007",
+      "status": "REFUNDED",
+      "invoiceNumber": "INV007",
+      "isVAT": true,
+      "companyName": "DEF Ltd",
+      "taxNumber": "456789123",
+      "notes": "Hoàn tiền do hủy phòng"
+    },
+    {
+      "paymentId": 8,
+      "bookingId": 8,
+      "paymentMethodId": 8,
+      "paymentDate": "2024-04-01T17:30:00",
+      "amount": 5000000,
+      "transactionId": "TXN008",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV008",
+      "isVAT": true,
+      "companyName": "GHI Company",
+      "taxNumber": "789123456",
+      "notes": "Thanh toán công ty"
+    },
+    {
+      "paymentId": 9,
+      "bookingId": 9,
+      "paymentMethodId": 9,
+      "paymentDate": "2024-04-02T18:30:00",
+      "amount": 6000000,
+      "transactionId": "TXN009",
+      "status": "PENDING",
+      "invoiceNumber": null,
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Chờ xác nhận"
+    },
+    {
+      "paymentId": 10,
+      "bookingId": 10,
+      "paymentMethodId": 10,
+      "paymentDate": "2024-04-03T19:30:00",
+      "amount": 3600000,
+      "transactionId": "TXN010",
+      "status": "COMPLETED",
+      "invoiceNumber": "INV010",
+      "isVAT": false,
+      "companyName": null,
+      "taxNumber": null,
+      "notes": "Thanh toán qua Apple Pay"
+    }
+  ]
+}

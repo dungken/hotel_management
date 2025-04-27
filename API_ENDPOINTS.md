@@ -43,7 +43,7 @@ This document provides detailed information about all API endpoints available in
   {
     "messenge": "Success",
     "data": {
-      "userId": 1,
+      "id": 1,
       "username": "johndoe123",
       "email": "john.doe@example.com",
       "dateCreated": "2023-04-07T10:30:00"
@@ -90,7 +90,7 @@ This document provides detailed information about all API endpoints available in
     "data": {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
       "user": {
-        "userId": 1,
+        "id": 1,
         "username": "johndoe123",
         "email": "john.doe@example.com"
       }
@@ -119,7 +119,7 @@ This document provides detailed information about all API endpoints available in
   {
     "messenge": "Success",
     "data": {
-      "userId": 1,
+      "id": 1,
       "username": "johndoe123",
       "email": "john.doe@example.com",
       "dateCreated": "2023-04-07T10:30:00"
@@ -148,7 +148,7 @@ This document provides detailed information about all API endpoints available in
   {
     "messenge": "Success",
     "data": {
-      "userId": 1,
+      "id": 1,
       "username": "johndoe123",
       "roles": ["USER", "VIP"]
     }

@@ -35,9 +35,9 @@ export const PAYMENT_STATUS = {
 
 export const ROUTES = {
   HOME: '/',
-  LOGIN: '/auth/login',
-  REGISTER: '/auth/register',
-  FORGOT_PASSWORD: '/auth/forgot-password',
+  LOGIN: '/login',
+  REGISTER: '/register',
+  FORGOT_PASSWORD: '/forgot-password',
   DASHBOARD: '/dashboard',
   USERS: '/users',
   CUSTOMERS: '/customers',
@@ -53,4 +53,4 @@ export const AUTH_KEYS = {
   USER: 'auth_user',
 } as const;
 
-export const DEFAULT_PASSWORD = 'password123';
+export const DEFAULT_PASSWORD = 'password';

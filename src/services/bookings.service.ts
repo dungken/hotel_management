@@ -1,16 +1,62 @@
 import api from './api';
-import { Booking, BookingChannel } from '@/types';
+import { Booking, BookingChannel, Room } from '@/types';
 
 export const bookingsService = {
-  getAll: () => api.get<Booking[]>('/bookings'),
+  // Get all bookings with optional filters
+  getAll: (filters?: { status?: string; customerId?: number; checkInDate?: string; checkOutDate?: string }) => {
+    let url = '/bookings';
+    if (filters) {
+      const queryParams = new URLSearchParams();
+      if (filters.status) queryParams.append('status', filters.status);
+      if (filters.customerId) queryParams.append('customerId', filters.customerId.toString());
+      if (filters.checkInDate) queryParams.append('checkInDate_gte', filters.checkInDate);
+      if (filters.checkOutDate) queryParams.append('checkOutDate_lte', filters.checkOutDate);
+      
+      if (queryParams.toString()) {
+        url += `?${queryParams.toString()}`;
+      }
+    }
+    return api.get<Booking[]>(url);
+  },
+  
+  // Get booking by ID
   getById: (id: number) => api.get<Booking>(`/bookings/${id}`),
+  
+  // Create new booking
   create: (booking: Omit<Booking, 'bookingId'>) => 
     api.post<Booking>('/bookings', booking),
+  
+  // Update booking
   update: (id: number, booking: Partial<Booking>) => 
     api.put<Booking>(`/bookings/${id}`, booking),
+  
+  // Soft delete (we're not actually deleting but using PATCH for status update)
   delete: (id: number) => api.delete(`/bookings/${id}`),
-  updateStatus: (id: number, status: string) => 
-    api.patch<Booking>(`/bookings/${id}`, { status }),
+  
+  // Cancel booking
+  cancelBooking: (id: number, cancellationReason: string) => 
+    api.patch<Booking>(`/bookings/${id}`, { 
+      status: "CANCELLED", 
+      cancellationReason 
+    }),
+  
+  // Approve/confirm booking
+  approveBooking: (id: number) => 
+    api.patch<Booking>(`/bookings/${id}`, { status: "CONFIRMED" }),
+  
+  // Check-in
+  checkIn: (id: number) => 
+    api.patch<Booking>(`/bookings/${id}`, { status: "CHECKED_IN" }),
+  
+  // Check-out (complete booking)
+  checkOut: (id: number) => 
+    api.patch<Booking>(`/bookings/${id}`, { status: "COMPLETED" }),
+    
+  // Check availability
+  checkAvailability: (checkInDate: string, checkOutDate: string) => {
+    const url = `/rooms?status=AVAILABLE&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`;
+    return api.get<Room[]>(url);
+  }
 };
 
 export const bookingChannelsService = {

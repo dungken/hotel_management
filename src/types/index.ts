@@ -1,25 +1,6 @@
-export interface User {
-  id: number;
-  username: string;
-  email: string;
-  dateCreated: string;
-  roles: string[];
-}
+export * from './user';
 
-export interface Customer {
-  customerId: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  nationality: string;
-  idType: string;
-  idNumber: string;
-  dateOfBirth: string;
-  customerType: number;
-  registrationDate: string;
-  loyaltyPoints: number;
-}
+export * from './customers';
 
 export interface RoomType {
   roomTypeId: number;
@@ -40,7 +21,7 @@ export interface Room {
   roomId: number;
   roomNumber: string;
   roomTypeId: number;
-  status: 'AVAILABLE' | 'OCCUPIED' | 'MAINTENANCE' | 'CLEANING';
+  status: 'AVAILABLE' | 'OCCUPIED' | 'MAINTENANCE' | 'CLEANING' | 'INACTIVE';
   notes: string;
 }
 
@@ -70,7 +51,7 @@ export interface Booking {
   children: number;
   childAges: string;
   bookingDate: string;
-  status: 'PENDING' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED';
+  status: 'PENDING' | 'CONFIRMED' | 'CHECKED_IN' | 'CANCELLED' | 'COMPLETED';
   hasCancellationFee: boolean;
   cancellationReason: string | null;
   specialRequests: string;

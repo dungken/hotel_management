@@ -13,27 +13,38 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
-import { Customer } from "@/types";
-import axios from "axios";
+import { Customer, CustomerSearchParams } from "@/types/customers";
+import { customersService } from "@/services/customers.service";
 import { format } from "date-fns";
-import { Plus, Search, Edit, Trash2, User, Mail, Phone, Star, Globe } from "lucide-react";
-
-const API_BASE_URL = "http://localhost:3001";
+import { Plus, Search, Edit, Trash2, User, Mail, Phone, Star, Globe, Eye } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useDebounce } from "@/hooks/useDebounce";
+import { CustomerSearchFilter } from "@/components/customers/CustomerSearchFilter";
+import { AuthenticatedLayout } from "@/components/layout/authenticated-layout";
 
 export default function CustomersPage() {
+  const router = useRouter();
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const [searchFilters, setSearchFilters] = useState<CustomerSearchParams>({});
   const { toast } = useToast();
 
   useEffect(() => {
     fetchCustomers();
-  }, []);
+  }, [debouncedSearchTerm, searchFilters]);
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/customers`);
-      setCustomers(response.data);
+      const params: CustomerSearchParams = { ...searchFilters };
+      if (debouncedSearchTerm) {
+        params.q = debouncedSearchTerm;
+      }
+      const response = await customersService.getAll(params);
+      // Filter only active customers
+      const activeCustomers = response.filter(c => c.status !== 'INACTIVE');
+      setCustomers(activeCustomers);
     } catch (error) {
       console.error("Error fetching customers:", error);
       toast({
@@ -50,7 +61,7 @@ export default function CustomersPage() {
     if (!confirm('Are you sure you want to delete this customer?')) return;
     
     try {
-      await axios.delete(`${API_BASE_URL}/customers/${id}`);
+      await customersService.delete(id);
       toast({
         title: "Success",
         description: "Customer deleted successfully",
@@ -65,13 +76,6 @@ export default function CustomersPage() {
       });
     }
   };
-
-  const filteredCustomers = customers.filter(customer =>
-    customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.phone.includes(searchTerm) ||
-    customer.nationality.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   const getCustomerTypeBadge = (type: number) => {
     switch (type) {
@@ -95,13 +99,14 @@ export default function CustomersPage() {
   }
 
   return (
-    <div className="p-8">
+    <AuthenticatedLayout>
+      <div className="p-8">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Customer Management</h1>
           <p className="text-gray-500">Manage hotel guests and their information</p>
         </div>
-        <Button onClick={() => window.location.href = '/customers/create'}>
+        <Button onClick={() => router.push('/customers/create')}>
           <Plus className="mr-2 h-4 w-4" /> Add Customer
         </Button>
       </div>
@@ -116,6 +121,10 @@ export default function CustomersPage() {
             className="pl-8"
           />
         </div>
+        <CustomerSearchFilter
+          onFilter={setSearchFilters}
+          currentFilters={searchFilters}
+        />
       </div>
 
       <div className="rounded-md border">
@@ -132,14 +141,18 @@ export default function CustomersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredCustomers.map((customer) => (
-              <TableRow key={customer.customerId}>
+            {customers.map((customer) => (
+              <TableRow key={customer.id}>
                 <TableCell className="font-medium">
                   <div className="flex items-center">
                     <User className="mr-2 h-5 w-5 text-gray-400" />
                     <div>
                       <div>{customer.name}</div>
-                      <div className="text-sm text-gray-500">{customer.idType}: {customer.idNumber}</div>
+                      <div className="text-sm text-gray-500">
+                        {customer.idType && customer.idNumber ? 
+                          `${customer.idType}: ${customer.idNumber}` : 
+                          'No ID info'}
+                      </div>
                     </div>
                   </div>
                 </TableCell>
@@ -158,38 +171,48 @@ export default function CustomersPage() {
                 <TableCell>
                   <div className="flex items-center">
                     <Globe className="mr-2 h-4 w-4 text-gray-400" />
-                    {customer.nationality}
+                    {customer.nationality || 'N/A'}
                   </div>
                 </TableCell>
-                <TableCell>{getCustomerTypeBadge(customer.customerType)}</TableCell>
+                <TableCell>{getCustomerTypeBadge(customer.customerType || 1)}</TableCell>
                 <TableCell>
                   <div className="flex items-center">
                     <Star className="mr-2 h-4 w-4 text-yellow-400" />
-                    {customer.loyaltyPoints}
+                    {customer.loyaltyPoints || 0}
                   </div>
                 </TableCell>
                 <TableCell>
-                  {format(new Date(customer.registrationDate), 'MMM dd, yyyy')}
+                  {customer.registrationDate ? 
+                    format(new Date(customer.registrationDate), 'MMM dd, yyyy') : 
+                    'N/A'
+                  }
                 </TableCell>
                 <TableCell className="text-right">
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => window.location.href = `/customers/${customer.customerId}/edit`}
+                    onClick={() => router.push(`/customers/${customer.id}`)}
+                  >
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => router.push(`/customers/${customer.id}/edit`)}
                   >
                     <Edit className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => handleDelete(customer.customerId)}
+                    onClick={() => handleDelete(customer.id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </TableCell>
               </TableRow>
             ))}
-            {filteredCustomers.length === 0 && (
+            {customers.length === 0 && (
               <TableRow>
                 <TableCell colSpan={7} className="text-center py-8">
                   No customers found
@@ -199,6 +222,7 @@ export default function CustomersPage() {
           </TableBody>
         </Table>
       </div>
-    </div>
+      </div>
+    </AuthenticatedLayout>
   );
 }

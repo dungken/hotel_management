@@ -4,7 +4,7 @@ import { AUTH_KEYS, ROUTES } from '@/constants';
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const isPublicPath = path.startsWith('/auth');
+  const isPublicPath = path === '/login' || path === '/forgot-password' || path === '/register' || path === '/debug' || path.startsWith('/api/');
   const token = request.cookies.get(AUTH_KEYS.TOKEN)?.value || '';
 
   // If trying to access protected routes without token, redirect to login

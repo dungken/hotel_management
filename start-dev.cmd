@@ -1,0 +1,9 @@
+@echo off
+echo Starting JSON Server on port 3001...
+start /B json-server --watch db.json --port 3001
+
+echo Waiting for JSON Server to start...
+timeout /t 2 /nobreak > NUL
+
+echo Starting Next.js development server...
+npm run dev

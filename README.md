@@ -1,36 +1,35 @@
 # Hotel Management System
 
-A modern hotel management system built with Next.js, TailwindCSS, and shadcn/ui.
+A modern hotel management system built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- Dashboard with key metrics
-- User management
-- Customer management
-- Room and room type management
-- Booking management
-- Payment tracking
-- Booking channel overview
+### Users Module
+- User authentication (login/logout)
+- User management (CRUD operations)
+- Role-based access control
+- Password management
+- Soft delete functionality
 
-## Tech Stack
-
-- Next.js 14
-- TypeScript
-- TailwindCSS
-- shadcn/ui
-- Axios
-- json-server (for mock API)
+### Customers Module
+- Customer registration and management
+- Loyalty points system
+- Advanced search and filtering
+- Customer type categorization
+- Soft delete functionality
 
 ## Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 16+ 
+- npm or yarn
+- JSON Server for mock API
 
 ## Installation
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd hotel-management
+cd hotel_management
 ```
 
 2. Install dependencies:
@@ -38,68 +37,134 @@ cd hotel-management
 npm install
 ```
 
-3. Start the mock API server:
+3. Install JSON Server globally:
 ```bash
-npm run mock-server
+npm install -g json-server
 ```
 
-4. In a new terminal, start the development server:
+## Running the Application
+
+1. Start the mock API server:
+```bash
+json-server --watch db.json --port 3001
+```
+
+2. In a new terminal, start the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. Open your browser and navigate to:
+```
+http://localhost:3000
+```
+
+## Testing the Application
+
+### Default Login Credentials
+
+- **Admin User**
+  - Email: admin@hotel.com
+  - Password: password
+
+- **Receptionist User**
+  - Email: receptionist@hotel.com
+  - Password: password
+
+### Testing Workflow
+
+1. **Login**
+   - Navigate to http://localhost:3000/login
+   - Use the credentials above to log in
+
+2. **Users Module**
+   - Access via the navigation menu "Users"
+   - Test CRUD operations:
+     - Create new user
+     - View user list
+     - Edit user
+     - Delete user (soft delete)
+     - Change password
+     - Manage roles
+
+3. **Customers Module**
+   - Access via the navigation menu "Customers"
+   - Test CRUD operations:
+     - Create new customer
+     - View customer list
+     - Edit customer
+     - Delete customer (soft delete)
+     - Update loyalty points
+     - Use advanced search
+
+4. **Navigation**
+   - Test responsive navigation menu
+   - Verify logout functionality
+   - Check header user menu
+
+## API Endpoints
+
+### Users
+- `GET /users` - List all users
+- `GET /users/:id` - Get user by ID
+- `POST /users` - Create new user
+- `PUT /users/:id` - Update user
+- `PATCH /users/:id` - Partial update (including soft delete)
+- `DELETE /users/:id` - Delete user (hard delete)
+
+### Customers
+- `GET /customers` - List all customers
+- `GET /customers/:id` - Get customer by ID
+- `POST /customers` - Create new customer
+- `PUT /customers/:id` - Update customer
+- `PATCH /customers/:id` - Partial update (including soft delete)
+- `DELETE /customers/:id` - Delete customer (hard delete)
 
 ## Project Structure
 
 ```
-hotel-management/
-├── app/                    # Next.js app directory
-│   ├── dashboard/         # Dashboard page
-│   ├── users/            # Users management
-│   ├── customers/        # Customers management
-│   ├── rooms/           # Rooms management
-│   ├── bookings/        # Bookings management
-│   ├── payments/        # Payments view
-│   └── booking-channels/ # Booking channels view
-├── components/           # Reusable components
-│   └── ui/              # UI components from shadcn/ui
-├── services/            # API services
-├── lib/                 # Utility functions
-└── data/               # Mock data files
+src/
+├── app/               # Next.js pages
+│   ├── customers/    # Customer management pages
+│   ├── users/        # User management pages
+│   ├── dashboard/    # Dashboard page
+│   └── login/        # Authentication page
+├── components/       # Reusable components
+│   ├── customers/    # Customer-specific components
+│   ├── users/        # User-specific components
+│   └── layout/       # Layout components
+├── services/         # API services
+├── types/           # TypeScript types
+└── contexts/        # React contexts
 ```
 
-## API Endpoints
+## Technologies Used
 
-The mock API server runs on `http://localhost:3001` and provides the following endpoints:
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **State Management**: React Context
+- **API**: JSON Server (mock)
+- **Date Handling**: date-fns
+- **Icons**: Lucide React
 
-- `GET /users` - Get all users
-- `GET /customers` - Get all customers
-- `GET /rooms` - Get all rooms
-- `GET /roomTypes` - Get all room types
-- `GET /bookings` - Get all bookings
-- `GET /payments` - Get all payments
-- `GET /bookingChannels` - Get all booking channels
-- `GET /paymentMethods` - Get all payment methods
+## Development Notes
 
-Each endpoint supports standard CRUD operations (POST, GET, PUT, DELETE).
+1. The application uses a mock API server (json-server) for development
+2. Authentication is simulated using localStorage
+3. All data is persisted in the `db.json` file
+4. Soft delete is implemented by updating status to "INACTIVE"
 
-## Development
+## Known Issues
 
-- The project uses TypeScript for type safety
-- TailwindCSS for styling
-- shadcn/ui for pre-built components
-- Axios for API calls
-- json-server for mock API
+- The application uses mock authentication (not secure for production)
+- Data is stored locally in JSON file (not suitable for production)
+- No real password hashing or security measures implemented
 
-## Contributing
+## Future Improvements
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License. 
+1. Implement real authentication with JWT
+2. Connect to a real database
+3. Add real-time updates
+4. Implement more advanced search filters
+5. Add data validation on the server side
+6. Implement role-based permissions properly

@@ -133,7 +133,7 @@ export default function BookingsPage() {
   };
 
   const getCustomer = (customerId: number) => {
-    return customers.find(customer => customer.customerId === customerId);
+    return customers.find(customer => customer.id === customerId);
   };
 
   const getRoom = (roomId: number) => {

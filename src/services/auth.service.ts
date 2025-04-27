@@ -35,8 +35,7 @@ class AuthService {
     try {
       // In a real implementation, this would call an authentication endpoint
       // For this mock implementation, we'll check against existing users
-      const response = await api.get('/users');
-      const users = response.data;
+      const users = await api.get('/users');
       
       const user = users.find((u: User) => u.email === credentials.email);
       
@@ -63,8 +62,7 @@ class AuthService {
   async register(data: RegisterData): Promise<AuthResponse> {
     try {
       // Check if email already exists
-      const response = await api.get('/users');
-      const users = response.data;
+      const users = await api.get('/users');
       
       if (users.some((u: User) => u.email === data.email)) {
         throw new Error('Email already registered');
@@ -94,8 +92,7 @@ class AuthService {
   async forgotPassword(email: string): Promise<void> {
     try {
       // In a real implementation, this would send a password reset email
-      const response = await api.get('/users');
-      const users = response.data;
+      const users = await api.get('/users');
       
       const user = users.find((u: User) => u.email === email);
       

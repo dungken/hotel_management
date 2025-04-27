@@ -24,6 +24,8 @@ import axios from "axios";
 
 const API_BASE_URL = "http://localhost:3001";
 
+import { AuthenticatedLayout } from "@/components/layout/authenticated-layout";
+
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
@@ -134,7 +136,8 @@ export default function DashboardPage() {
   }
 
   return (
-    <div>
+    <AuthenticatedLayout>
+      <div>
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
@@ -323,6 +326,7 @@ export default function DashboardPage() {
           </a>
         </div>
       </div>
-    </div>
+      </div>
+    </AuthenticatedLayout>
   );
 }

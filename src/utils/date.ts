@@ -1,21 +1,47 @@
-import { format, parseISO } from 'date-fns';
+import { format, isValid } from "date-fns";
 
-export const formatDate = (date: string | Date) => {
-  const parsedDate = typeof date === 'string' ? parseISO(date) : date;
-  return format(parsedDate, 'MMM dd, yyyy');
+export const formatDate = (date: string | Date | undefined | null): string => {
+  if (!date) return "N/A";
+  
+  const dateObj = date instanceof Date ? date : new Date(date);
+  
+  if (!isValid(dateObj)) {
+    console.warn(`Invalid date: ${date}`);
+    return "Invalid date";
+  }
+  
+  return format(dateObj, "MMM dd, yyyy");
 };
 
-export const formatDateTime = (date: string | Date) => {
-  const parsedDate = typeof date === 'string' ? parseISO(date) : date;
-  return format(parsedDate, 'MMM dd, yyyy HH:mm');
+export const formatDateTime = (date: string | Date | undefined | null): string => {
+  if (!date) return "N/A";
+  
+  const dateObj = date instanceof Date ? date : new Date(date);
+  
+  if (!isValid(dateObj)) {
+    console.warn(`Invalid date: ${date}`);
+    return "Invalid date";
+  }
+  
+  return format(dateObj, "MMM dd, yyyy HH:mm");
 };
 
-export const getToday = () => {
-  return format(new Date(), 'yyyy-MM-dd');
+export const formatTime = (date: string | Date | undefined | null): string => {
+  if (!date) return "N/A";
+  
+  const dateObj = date instanceof Date ? date : new Date(date);
+  
+  if (!isValid(dateObj)) {
+    console.warn(`Invalid date: ${date}`);
+    return "Invalid time";
+  }
+  
+  return format(dateObj, "HH:mm");
 };
 
-export const isSameDay = (date1: Date | string, date2: Date | string) => {
-  const d1 = typeof date1 === 'string' ? parseISO(date1) : date1;
-  const d2 = typeof date2 === 'string' ? parseISO(date2) : date2;
-  return format(d1, 'yyyy-MM-dd') === format(d2, 'yyyy-MM-dd');
+export const isDateValid = (date: string | Date | undefined | null): boolean => {
+  if (!date) return false;
+  
+  const dateObj = date instanceof Date ? date : new Date(date);
+  return isValid(dateObj);
 };

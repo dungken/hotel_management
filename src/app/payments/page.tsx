@@ -96,7 +96,7 @@ export default function PaymentsPage() {
   };
 
   const getCustomer = (customerId: number) => {
-    return customers.find(customer => customer.customerId === customerId);
+    return customers.find(customer => customer.id === customerId);
   };
 
   const getStatusBadge = (status: string) => {
@@ -138,14 +138,14 @@ export default function PaymentsPage() {
     const booking = getBooking(payment.bookingId);
     const customer = booking ? getCustomer(booking.customerId) : null;
     const paymentMethod = getPaymentMethod(payment.paymentMethodId);
-    
+
     const matchesSearch = payment.transactionId.toLowerCase().includes(searchTerm.toLowerCase()) ||
       payment.invoiceNumber?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (customer && customer.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (paymentMethod && paymentMethod.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+
     const matchesStatus = statusFilter === 'ALL' || payment.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 
@@ -210,7 +210,7 @@ export default function PaymentsPage() {
               const booking = getBooking(payment.bookingId);
               const customer = booking ? getCustomer(booking.customerId) : null;
               const paymentMethod = getPaymentMethod(payment.paymentMethodId);
-              
+
               return (
                 <TableRow key={payment.paymentId}>
                   <TableCell className="font-medium">

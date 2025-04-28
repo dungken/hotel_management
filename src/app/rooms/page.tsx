@@ -100,6 +100,9 @@ export default function RoomsPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Notes
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -116,14 +119,28 @@ export default function RoomsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(room.status)}`}>
-                    {room.status}
-                  </span>
+                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(room.status)}`}>
+                {room.status}
+                </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="text-sm text-gray-900 truncate max-w-xs">
                     {room.notes || '-'}
                   </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <Link 
+                    href={`/rooms/${room.roomId}`}
+                    className="text-blue-600 hover:text-blue-900 mr-4"
+                  >
+                    View
+                  </Link>
+                  <Link 
+                    href={`/rooms/${room.roomId}/edit`}
+                    className="text-indigo-600 hover:text-indigo-900"
+                  >
+                    Edit
+                  </Link>
                 </td>
               </tr>
             ))}

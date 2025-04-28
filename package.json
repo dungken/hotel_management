@@ -10,7 +10,8 @@
     "mock-server": "json-server --watch db.json --port 3001",
     "dev:all": "concurrently \"npm run mock-server\" \"npm run dev\"",
     "start:linux": "bash start-dev.sh",
-    "start:windows": "start-dev.cmd"
+    "start:windows": "start-dev.cmd",
+    "fix-rooms": "node fix-rooms-id.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

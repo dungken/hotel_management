@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Start JSON Server in background
+# Start custom JSON Server in background
 echo "Starting JSON Server on port 3001..."
-json-server --watch db.json --port 3001 &
+node server.js &
 JSON_SERVER_PID=$!
 
 # Wait a moment for JSON Server to start

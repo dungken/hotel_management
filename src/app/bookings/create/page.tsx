@@ -65,7 +65,10 @@ export default function CreateBookingPage() {
         staffId: 1, // Default staff ID
       };
 
-      await bookingsService.create(bookingData);
+      console.log('Submitting booking data:', bookingData);
+
+      const result = await bookingsService.create(bookingData);
+      console.log('Booking created successfully:', result);
 
       toast({
         title: "Success",
@@ -73,11 +76,25 @@ export default function CreateBookingPage() {
       });
 
       router.push("/bookings");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error creating booking:", error);
+      
+      // Enhanced error handling
+      let errorMessage = "Failed to create booking. Please try again.";
+      
+      if (error.response?.data?.error) {
+        // Get specific error message from API
+        errorMessage = `Error: ${error.response.data.error}`;
+        if (error.response.data.details) {
+          errorMessage += ` (${error.response.data.details})`;
+        }
+      } else if (error.message) {
+        errorMessage = `Error: ${error.message}`;
+      }
+      
       toast({
-        title: "Error",
-        description: "Failed to create booking. Please try again.",
+        title: "Booking Creation Failed",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

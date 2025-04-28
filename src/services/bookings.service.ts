@@ -23,8 +23,14 @@ export const bookingsService = {
   getById: (id: number) => api.get<Booking>(`/bookings/${id}`),
   
   // Create new booking
-  create: (booking: Omit<Booking, 'bookingId'>) => 
-    api.post<Booking>('/bookings', booking),
+  create: async (booking: Omit<Booking, 'bookingId'>) => {
+    try {
+      return await api.post<Booking>('/bookings', booking);
+    } catch (error) {
+      console.error('Error details in bookings.service:', error);
+      throw error;
+    }
+  },
   
   // Update booking
   update: (id: number, booking: Partial<Booking>) => 
@@ -50,13 +56,7 @@ export const bookingsService = {
   
   // Check-out (complete booking)
   checkOut: (id: number) => 
-    api.patch<Booking>(`/bookings/${id}`, { status: "COMPLETED" }),
-    
-  // Check availability
-  checkAvailability: (checkInDate: string, checkOutDate: string) => {
-    const url = `/rooms?status=AVAILABLE&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`;
-    return api.get<Room[]>(url);
-  }
+    api.patch<Booking>(`/bookings/${id}`, { status: "COMPLETED" })
 };
 
 export const bookingChannelsService = {

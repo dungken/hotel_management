@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Room, RoomType } from '@/types';
-import { roomsService, roomTypesService } from '@/services/rooms.service';
-import api from '@/services/api';
+import { Room } from '@/types';
+import { roomsService } from '@/services/rooms.service';
 
-interface CreateRoomFormProps {
+interface UpdateRoomFormProps {
+  roomId: number;
+  initialData?: Partial<Room>;
   onSuccess?: () => void;
   onCancel?: () => void;
 }
@@ -18,56 +19,51 @@ const ROOM_STATUSES = [
   { value: 'INACTIVE', label: 'Inactive' },
 ] as const;
 
-export default function CreateRoomForm({ onSuccess, onCancel }: CreateRoomFormProps) {
-  const [formData, setFormData] = useState({
-    roomNumber: '',
-    roomTypeId: '',
-    status: 'AVAILABLE' as Room['status'],
-    notes: '',
+export default function UpdateRoomForm({ 
+  roomId, 
+  initialData, 
+  onSuccess, 
+  onCancel 
+}: UpdateRoomFormProps) {
+  const [formData, setFormData] = useState<Partial<Room>>({
+    status: initialData?.status || 'AVAILABLE',
+    notes: initialData?.notes || '',
   });
-  const [roomTypes, setRoomTypes] = useState<RoomType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchRoomTypes = async () => {
-      try {
-        const types = await roomTypesService.getAll();
-        setRoomTypes(types);
-      } catch (err) {
-        console.error('Error fetching room types:', err);
-        setError('Failed to load room types');
-      }
-    };
-
-    fetchRoomTypes();
-  }, []);
+    if (initialData) {
+      setFormData({
+        status: initialData.status || 'AVAILABLE',
+        notes: initialData.notes || '',
+      });
+    }
+  }, [initialData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccessMessage(null);
 
     try {
-      // Send data directly to the API with both id and roomId for compatibility
-      const roomData = {
-        id: Date.now(), // Generate a temporary unique ID
-        roomId: Date.now(), // Same value for roomId
-        roomNumber: formData.roomNumber,
-        roomTypeId: Number(formData.roomTypeId),
+      await roomsService.update(roomId, {
         status: formData.status,
         notes: formData.notes,
-      };
-      
-      // Use direct API call to bypass the service layer transformation
-      await api.post('/rooms', roomData);
+      });
 
+      setSuccessMessage('Room updated successfully');
+      
       if (onSuccess) {
-        onSuccess();
+        setTimeout(() => {
+          onSuccess();
+        }, 1500); // Show success message for 1.5 seconds before redirect
       }
     } catch (err: any) {
-      console.error('Error creating room:', err);
-      setError(err.response?.data?.error || 'Failed to create room');
+      console.error('Error updating room:', err);
+      setError(err.response?.data?.error || 'Failed to update room');
     } finally {
       setLoading(false);
     }
@@ -88,42 +84,11 @@ export default function CreateRoomForm({ onSuccess, onCancel }: CreateRoomFormPr
         </div>
       )}
 
-      <div>
-        <label htmlFor="roomNumber" className="block text-sm font-medium text-gray-700">
-          Room Number*
-        </label>
-        <input
-          type="text"
-          id="roomNumber"
-          name="roomNumber"
-          value={formData.roomNumber}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          placeholder="e.g., 101, A24, S03"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="roomTypeId" className="block text-sm font-medium text-gray-700">
-          Room Type*
-        </label>
-        <select
-          id="roomTypeId"
-          name="roomTypeId"
-          value={formData.roomTypeId}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-        >
-          <option value="">Select a room type</option>
-          {roomTypes.map(type => (
-            <option key={type.roomTypeId} value={type.roomTypeId}>
-              {type.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      {successMessage && (
+        <div className="bg-green-50 text-green-600 p-4 rounded-md">
+          {successMessage}
+        </div>
+      )}
 
       <div>
         <label htmlFor="status" className="block text-sm font-medium text-gray-700">
@@ -165,6 +130,7 @@ export default function CreateRoomForm({ onSuccess, onCancel }: CreateRoomFormPr
           <button
             type="button"
             onClick={onCancel}
+            disabled={loading}
             className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Cancel
@@ -175,7 +141,7 @@ export default function CreateRoomForm({ onSuccess, onCancel }: CreateRoomFormPr
           disabled={loading}
           className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300"
         >
-          {loading ? 'Creating...' : 'Create Room'}
+          {loading ? 'Updating...' : 'Update Room'}
         </button>
       </div>
     </form>

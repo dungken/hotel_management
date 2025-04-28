@@ -94,70 +94,46 @@
   ],
   "rooms": [
     {
-      "status": "OCCUPIED",
-      "notes": "Mountain view",
       "roomId": 1,
-      "id": 1
+      "roomNumber": "101",
+      "roomTypeId": 1,
+      "status": "AVAILABLE",
+      "notes": "Mountain view"
     },
     {
       "roomId": 2,
       "roomNumber": "102",
       "roomTypeId": 1,
       "status": "OCCUPIED",
-      "notes": "City view",
-      "id": 2
+      "notes": "City view"
     },
     {
-      "status": "AVAILABLE",
-      "notes": "Sea view, balcony demo",
       "roomId": 3,
-      "id": 3
+      "roomNumber": "201",
+      "roomTypeId": 2,
+      "status": "AVAILABLE",
+      "notes": "Sea view, balcony"
     },
     {
       "roomId": 4,
       "roomNumber": "202",
       "roomTypeId": 2,
       "status": "MAINTENANCE",
-      "notes": "Plumbing repair needed",
-      "id": 4
+      "notes": "Plumbing repair needed"
     },
     {
       "roomId": 5,
       "roomNumber": "301",
       "roomTypeId": 3,
       "status": "CLEANING",
-      "notes": "Executive suite, corner room",
-      "id": 5
+      "notes": "Executive suite, corner room"
     },
     {
       "roomId": 6,
       "roomNumber": "302",
       "roomTypeId": 3,
       "status": "AVAILABLE",
-      "notes": "Executive suite, with kitchenette",
-      "id": 6
-    },
-    {
-      "status": "MAINTENANCE",
-      "notes": "Demo ",
-      "roomId": 1745821544997,
-      "id": 1745821544997
-    },
-    {
-      "id": 1745821559670,
-      "roomId": 1745821559670,
-      "roomNumber": "122",
-      "roomTypeId": 2,
-      "status": "MAINTENANCE",
-      "notes": "test"
-    },
-    {
-      "id": 1745821579973,
-      "roomId": 1745821579973,
-      "roomNumber": "123",
-      "roomTypeId": 4,
-      "status": "INACTIVE",
-      "notes": "DEmo"
+      "notes": "Executive suite, with kitchenette"
     }
   ],
   "bookings": [

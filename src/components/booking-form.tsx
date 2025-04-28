@@ -34,6 +34,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Booking, Customer, Room, BookingChannel, RoomType } from "@/types";
 import { bookingsService, bookingChannelsService } from "@/services/bookings.service";
+import { roomsService } from "@/services/rooms.service";
 import { cn } from "@/lib/utils";
 
 // Form validation schema
@@ -138,24 +139,25 @@ export function BookingForm({
       const currentRoomId = initialData?.roomId;
       
       const checkAvailability = async () => {
-        try {
-          const response = await bookingsService.checkAvailability(checkIn, checkOut);
-          let availableRooms = response || [];
-          
-          // If editing, add current room if not in the list
-          if (currentRoomId && !availableRooms.some(room => room.roomId === currentRoomId)) {
-            const currentRoom = rooms.find(room => room.roomId === currentRoomId);
-            if (currentRoom) {
-              availableRooms = [...availableRooms, currentRoom];
-            }
-          }
-          
-          setAvailableRooms(availableRooms);
-        } catch (error) {
-          console.error("Error checking room availability:", error);
-          setAvailableRooms(rooms || []); // Fallback to all rooms
+      try {
+      // Use roomsService instead of bookingsService
+      const response = await roomsService.checkAvailability(checkIn, checkOut);
+      let availableRooms = response || [];
+      
+      // If editing, add current room if not in the list
+      if (currentRoomId && !availableRooms.some(room => room.roomId === currentRoomId)) {
+      const currentRoom = rooms.find(room => room.roomId === currentRoomId);
+      if (currentRoom) {
+        availableRooms = [...availableRooms, currentRoom];
         }
-      };
+      }
+      
+        setAvailableRooms(availableRooms);
+      } catch (error) {
+      console.error("Error checking room availability:", error);
+        setAvailableRooms(rooms || []); // Fallback to all rooms
+        }
+        };
       
       checkAvailability();
       
@@ -234,6 +236,11 @@ export function BookingForm({
       bookingDate: format(new Date(), "yyyy-MM-dd"), // Current date for new bookings
       bookingCode: initialData?.bookingCode || `BK${Date.now().toString().slice(-8)}`, // Generate a code for new bookings
       staffId: initialData?.staffId || 1, // Default staff ID
+      status: values.status || 'PENDING', // Set default status
+      childAges: values.childAges || '',
+      cancellationReason: values.cancellationReason || null,
+      discountReason: values.discountReason || null,
+      hasCancellationFee: values.hasCancellationFee || false,
     };
     
     onSubmit(formattedValues as BookingFormValues);

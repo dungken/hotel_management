@@ -55,11 +55,11 @@ const bookingFormSchema = z.object({
   extraBeds: z.coerce.number().min(0, "Cannot be negative"),
   includesBreakfast: z.boolean().default(false),
   discountPercent: z.coerce.number().min(0, "Cannot be negative").max(100, "Cannot exceed 100%"),
-  discountReason: z.string().optional(),
+  discountReason: z.string().optional().nullable(),
   totalAmount: z.coerce.number().min(0, "Total amount cannot be negative"),
   status: z.enum(["PENDING", "CONFIRMED", "CHECKED_IN", "CANCELLED", "COMPLETED"]).optional(),
   hasCancellationFee: z.boolean().default(false),
-  cancellationReason: z.string().optional(),
+  cancellationReason: z.string().optional().nullable(),
 }).refine(data => {
   return data.checkOutDate > data.checkInDate;
 }, {
@@ -105,6 +105,8 @@ export function BookingForm({
       checkInDate: new Date(initialData.checkInDate),
       checkOutDate: new Date(initialData.checkOutDate),
       status: initialData.status,
+      cancellationReason: initialData.cancellationReason || undefined,
+      discountReason: initialData.discountReason || undefined,
     } : {
       customerId: 0,
       roomId: 0,

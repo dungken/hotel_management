@@ -71,13 +71,23 @@ type BookingFormValues = z.infer<typeof bookingFormSchema> & {
   status?: "PENDING" | "CONFIRMED" | "CHECKED_IN" | "CANCELLED" | "COMPLETED";
 };
 
+// Type for API-formatted booking data (with string dates)
+type ApiBookingData = Omit<BookingFormValues, 'checkInDate' | 'checkOutDate'> & {
+  checkInDate: string;
+  checkOutDate: string;
+  bookingDate: string;
+  bookingCode: string;
+  staffId: number;
+  childAges: string;
+};
+
 interface BookingFormProps {
   initialData?: Booking;
   customers: Customer[];
   rooms: Room[];
   roomTypes: RoomType[];
   channels: BookingChannel[];
-  onSubmit: (data: any) => void;
+  onSubmit: (data: ApiBookingData) => void; // Using our specific API data type
   isSubmitting?: boolean;
 }
 
@@ -230,8 +240,8 @@ export function BookingForm({
 
   // Handle form submission
   const handleSubmit = (values: BookingFormValues) => {
-    // Format dates to strings for API
-    const formattedValues = {
+    // Format dates to strings for API, but create a new object type for API submission
+    const formattedValues: ApiBookingData = {
       ...values,
       checkInDate: format(values.checkInDate, "yyyy-MM-dd"),
       checkOutDate: format(values.checkOutDate, "yyyy-MM-dd"),
@@ -245,7 +255,8 @@ export function BookingForm({
       hasCancellationFee: values.hasCancellationFee || false,
     };
     
-    onSubmit(formattedValues as BookingFormValues);
+    // Pass the formatted values to onSubmit with the correct API type
+    onSubmit(formattedValues);
   };
 
   return (
@@ -498,6 +509,7 @@ export function BookingForm({
                         <Input 
                           placeholder="e.g., 5, 7, 12" 
                           {...field} 
+                          value={field.value || ""}
                           disabled={isSubmitting || watchedValues.children === 0}
                         />
                       </FormControl>
@@ -567,6 +579,7 @@ export function BookingForm({
                           placeholder="Any special requests or notes"
                           className="min-h-[100px]"
                           {...field}
+                          value={field.value || ""}
                           disabled={isSubmitting}
                         />
                       </FormControl>
@@ -613,6 +626,7 @@ export function BookingForm({
                           <Input 
                             placeholder="Reason for discount"
                             {...field}
+                            value={field.value || ""}
                             disabled={isSubmitting || watchedValues.discountPercent === 0}
                           />
                         </FormControl>
@@ -688,6 +702,7 @@ export function BookingForm({
                               placeholder="Reason for cancellation"
                               className="min-h-[80px]"
                               {...field}
+                              value={field.value || ""}
                               disabled={isSubmitting}
                             />
                           </FormControl>

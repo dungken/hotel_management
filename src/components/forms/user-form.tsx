@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ROLES } from "@/constants";
-import { User } from "@/types";
+import { User, UserRole } from "@/types";
 
 interface UserFormProps {
   initialData?: Partial<User>;
@@ -35,7 +35,7 @@ export const UserForm: React.FC<UserFormProps> = ({
   const handleRoleChange = (role: string) => {
     setFormData((prev) => ({
       ...prev,
-      roles: [role],
+      roles: [role as UserRole],
     }));
   };
 

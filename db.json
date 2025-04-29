@@ -158,6 +158,14 @@
       "roomTypeId": 4,
       "status": "INACTIVE",
       "notes": "DEmo"
+    },
+    {
+      "id": 1745892240738,
+      "roomId": 1745892240738,
+      "roomNumber": "122",
+      "roomTypeId": 2,
+      "status": "MAINTENANCE",
+      "notes": "sadfsafd"
     }
   ],
   "bookings": [

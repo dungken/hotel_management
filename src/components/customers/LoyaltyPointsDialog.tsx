@@ -31,7 +31,7 @@ export function LoyaltyPointsDialog({ customer, isOpen, onClose, onUpdate }: Loy
     setIsLoading(true);
     
     try {
-      await customersService.updateLoyaltyPoints(customer.customerId, points);
+      await customersService.updateLoyaltyPoints(customer.id, points);
       toast({
         title: "Success",
         description: "Loyalty points updated successfully",

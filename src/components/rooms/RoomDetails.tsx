@@ -22,7 +22,7 @@ export default function RoomDetails({ room, roomType, onStatusUpdate }: RoomDeta
     
     try {
       await roomsService.updateStatus(room.roomId, newStatus);
-      setSuccessMessage(`Room status updated to ${getStatusBadge(newStatus).label}`);
+      setSuccessMessage(`Room status updated to ${getStatusInfo(newStatus).label}`);
       
       if (onStatusUpdate) {
         setTimeout(() => {
@@ -37,8 +37,8 @@ export default function RoomDetails({ room, roomType, onStatusUpdate }: RoomDeta
     }
   };
 
-  // Map status to a color and badge style
-  const getStatusBadge = (status: string) => {
+  // Map status to color and label info
+  const getStatusInfo = (status: string) => {
     const statusMap: Record<string, { color: string; label: string }> = {
       'AVAILABLE': { color: 'bg-green-100 text-green-800', label: 'Available' },
       'OCCUPIED': { color: 'bg-red-100 text-red-800', label: 'Occupied' },
@@ -47,7 +47,12 @@ export default function RoomDetails({ room, roomType, onStatusUpdate }: RoomDeta
       'INACTIVE': { color: 'bg-gray-100 text-gray-800', label: 'Inactive' },
     };
 
-    const statusInfo = statusMap[status] || { color: 'bg-gray-100 text-gray-800', label: status };
+    return statusMap[status] || { color: 'bg-gray-100 text-gray-800', label: status };
+  };
+
+  // Render status badge
+  const getStatusBadge = (status: string) => {
+    const statusInfo = getStatusInfo(status);
     
     return (
       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${statusInfo.color}`}>
